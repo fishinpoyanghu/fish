@@ -1,0 +1,120 @@
+@charset "utf-8";
+/* CSS Document */
+
+.income-top{ width:auto; height:auto; overflow:hidden; padding:25px 0 0 30px;}
+.income-title{ width:auto; height:auto; float:left; margin-right:25px; line-height:36px; font-size:18px; color:#323232;}
+.income-title span.blue{ color:#17b2e6;}
+.income-title span.red{ color:#ff0000;}
+.income-top .income-but{ display:block; width:80px; height:30px; float:left; border-radius:6px; background-color:#17b2e6; line-height:30px; text-align:center; font-size:16px; color:#ffffff;}
+.income-top .prompt{ float:left; margin-left:20px; line-height:30px; font-size:14px; color:#ff9800;}
+
+.income-head{ width:100%; height:40px; margin-top:10px; background-color:#eeeeee;}
+.income-head span{ display:block; width:auto; height:40px; float:left; border-right:solid 1px #ffffff; line-height:40px; text-align:center; font-size:#323232; position:relative;}
+.income .id{ width:113px;}
+.income .type{ width:118px;}
+.income .price{ width:92px;}
+.income .desc{ width:126px;}
+.income .user{ width:112px;}
+.income .time{ width:138px;}
+.income .status{ width:98px;}
+.income-head .icon{ display:inline-block; width:12px; height:12px; margin:2px 0 0 5px; background:url(../images/icon.png) no-repeat left top; cursor:pointer;}
+.income-head .prompt{ display:none; width:300px; height:auto; overflow:hidden; background-color:#ffffff; padding:15px 20px; border:solid 1px #cccccc; position:absolute; right:10px; top:30px; line-height:24px; text-align:left; font-size:14px;}
+
+.income-li{ width:100%; height:75px; overflow:hidden; border-bottom:dashed 1px #cccccc;}
+.income-li span{ display:block; height:75px; float:left; text-align:center; border-right:solid 1px #cccccc; line-height:75px; font-size:16px; color:#323232;}
+.income-li span.desc,.income-li span.user{ padding-top:15px; line-height:24px;}
+
+.withdrawal .month{ width:196px;}
+.withdrawal .money{ width:216px;}
+.withdrawal .status{ width:204px;}
+.withdrawal .time{ width:184px;}
+
+.withdrawal .income-body .money span{ float:none; display:inline; padding:0 15px; border:none;}
+.withdrawal .income-body .money span.blue{ color:#ff9800;}
+.withdrawal .income-body .money span.red{ color:#ff0000;}
+.withdrawal .income-body .time{ line-height:26px; padding-top:10px;}
+
+
+
+/* ****************************************************************
+ * window css
+ * ***************************************************************/
+.window.income-no .window-frame{ width:490px; margin-left:-262.5px; padding:20px 25px;}
+.window.income-no .income-body{ width:100%; height:auto; overflow:hidden;}
+.window.income-no .income-no-li{ width:100%; height:auto; margin:10px 0 10px;}
+.window.income-no .income-no-li .label{ float:left; margin-right:10px; line-height:28px; font-size:16px; color:#000000;}
+.window.income-no .income-no-li .select{ width:90px; height:26px; float:left; margin-right:10px; border:solid 1px #cccccc;}
+.window.income-no .income-no-li .prompt{ float:left; margin-left:10px; line-height:28px; font-size:16px; color:#ff9800;}
+.window.income-no .income-bank{ width:448px; height:auto; overflow:hidden; border:solid 1px #cccccc; padding:0 20px;}
+.window.income-no .income-bank-prompt{ width:100%; border-bottom:solid 1px #cccccc; line-height:40px; font-size:16px;color:#ff0000;}
+.window.income-no .income-bank-li{ width:100%; height:48px; overflow:hidden; border-bottom:solid 1px #cccccc;}
+.window.income-no .income-bank-img{ width:35px; height:35px; overflow:hidden; float:left; margin:7px 10px 0 5px; border-radius:5px;}
+.window.income-no .income-bank-img img{ width:100%; height:100%;}
+.window.income-no .income-bank-title{ display:block; width:260px; float:left; margin-left:18px; line-height:48px; font-size:16px; color:#000000;}
+.window.income-no .income-bank-binding{ display:block; width:58px; height:28px; overflow:hidden; float:left; margin:12px 0 0 20px; background-color:#17b2e6; border-radius:5px; text-align:center; line-height:28px; font-size:16px; color:#ffffff;}
+.window.income-no .income-bank-add{ display:block; width:26px; height:26px; float:left; margin:10px; border-radius:50%; border:solid 1px #00b9e9; line-height:25px; text-align:center; font-size:22px; color:#00b9e9; cursor:pointer;}
+.window.income-no .income-but-box{ width:100%; height:auto; overflow:hidden;}
+.window.income-no .income-but-box span{ display:block; float:left; width:auto; padding:0 15px; margin:20px 0; border-radius:5px; background-color:#17b2e6; line-height:28px; font-size:16px; color:#ffffff; cursor:pointer;}
+.window.income-no .income-but-box span.income-but-out{ margin-left:128px;}
+.window.income-no .income-but-box span.income-but-add{ margin-left:68px;}
+
+.weixin{ display:block;}
+.weixin .window-frame{ width:336px; padding:20px 50px; margin-left:-218px;}
+.weixin .weixin-body{ width:100%; height:auto; overflow:hidden;}
+.weixin .weixin-title{ display:block; width:100%; margin-bottom:20px; text-align:center; line-height:36px; font-size:18px; color:#000000;}
+.weixin .weixin-li{ width:100%; height:auto; overflow:hidden; margin-bottom:15px;}
+.weixin .weixin-li span{ display:block; float:left; width:80px; margin-right:5px; text-align:right; line-height:28px;}
+.weixin .weixin-li input{ width:238px; height:26px; padding-left:10px; border:solid 1px #cccccc; font-size:14px; color:#000000;}
+.weixin .weixin-but{ width:100%; height:auto; overflow:hidden; padding:20px 0;}
+.weixin .weixin-but span{ display:block; width:auto; float:left; padding:0 15px; background-color:#17b2e6; border-radius:5px; line-height:28px; font-size:16px; color:#ffffff;}
+.weixin .weixin-but span.out{ margin-left:83px;}
+.weixin .weixin-but span.determine{ margin-left:106px;}
+
+
+.window.income-choose .window-frame{ width:490px; margin-left:-262.5px; padding:20px 25px;}
+.window.income-choose .income-body{ width:100%; height:auto; overflow:hidden;}
+.window.income-choose .income-choose-li{ width:100%; height:auto; margin:10px 0 10px;}
+.window.income-choose .income-choose-li .label{ float:left; margin-right:10px; line-height:28px; font-size:16px; color:#000000;}
+.window.income-choose .income-choose-li .select{ width:150px; height:26px; float:left; margin-right:10px; border:solid 1px #cccccc;}
+.window.income-choose .income-choose-li .prompt{ float:left; margin-left:10px; line-height:28px; font-size:16px; color:#ff9800;}
+.window.income-choose .income-bank{ width:448px; height:auto; overflow:hidden; border:solid 1px #cccccc; padding:0 20px;}
+.window.income-choose .income-bank-prompt{ width:100%; border-bottom:solid 1px #cccccc; line-height:40px; font-size:16px;color:#ff0000;}
+.window.income-choose .income-bank-li{ width:100%; height:48px; overflow:hidden; border-bottom:solid 1px #cccccc;}
+.window.income-choose .income-bank-img{ width:35px; height:35px; overflow:hidden; float:left; margin:7px 10px 0 5px; border-radius:5px;}
+.window.income-choose .income-bank-img img{ width:100%; height:100%;}
+.window.income-choose .income-bank-title,.window.income-choose .income-bank-user{ display:block; width:110px; float:left; margin-left:18px; line-height:48px; font-size:16px; color:#000000;}
+.window.income-choose .income-bank-user{ width:180px; margin-left:0;}
+.window.income-choose .income-bank-checkbox{ float:left; margin-top:18px;}
+.window.income-choose .income-bank-add{ display:block; width:26px; height:26px; float:left; margin:10px; border-radius:50%; border:solid 1px #00b9e9; line-height:25px; text-align:center; font-size:22px; color:#00b9e9; cursor:pointer;}
+.window.income-choose .income-but-box{ width:100%; height:auto; overflow:hidden;}
+.window.income-choose .income-but-box span{ display:block; float:left; width:auto; padding:0 15px; margin:20px 0; border-radius:5px; background-color:#17b2e6; line-height:28px; font-size:16px; color:#ffffff; cursor:pointer;}
+.window.income-choose .income-but-box span.income-but-out{ margin-left:128px;}
+.window.income-choose .income-but-box span.income-but-add{ margin-left:68px;}
+
+.bank-add .window-frame{ width:710px; height:auto; padding:20px; margin-left:-365px;}
+.bank-add .bank-add-frame .title{ width:100%; height:60px; margin-left:10px; line-height:60px; font-size:16px; color:#323232;}
+.bank-add .bank-add-li{ width:100%; height:auto; overflow:hidden; line-height:60px; border-top:solid 1px #cccccc;}
+.bank-add .bank-add-li .frame{ float:left; overflow:hidden; margin-left:10px;}
+.bank-add .bank-add-li .label{ display:block; width:auto; float:left; margin-right:10px; line-height:60px; font-size:16px; color:#323232;}
+.bank-add .bank-add-li .frame .input{ width:auto; height:26px; float:left; margin-top:18px; padding-left:10px; border:solid 1px #cccccc;}
+.bank-add .bank-add-li .id-num{ display:block; float:left; margin-left:60px; line-height:60px; font-size:16px; color:#000000;}
+.bank-add .bank-add-li .text{ width:auto; margin-left:10px; line-height:60px; font-size:16px; color:#000000;}
+.bank-add .bank-add-box{ width:100%; height:auto; overflow:hidden; padding-top:10px; margin-bottom:20px;}
+.bank-add .bank-add-box .input-box{ float:left; margin-left:10px;}
+.bank-add .bank-add-box .label{ width:80px; float:left; line-height:28px; margin-right:10px; text-align:right;}
+.bank-add .bank-add-box .input,.bank-add .bank-add-box .select{ width:227px; height:26px; float:left; padding-left:10px; margin-right:15px; border:solid 1px #cccccc; line-height:26px; font-size:16px; color:#000000;}
+
+.bank-add .bank-add-but-box{ width:100%; height:auto; overflow:hidden;}
+.bank-add .bank-add-but-box span{ display:block; float:left; width:auto; padding:0 15px; margin:20px 0; border-radius:5px; background-color:#17b2e6; line-height:28px; font-size:16px; color:#ffffff; cursor:pointer;}
+.bank-add .bank-add-but-box span.bank-add-but-out{ margin-left:228px;}
+.bank-add .bank-add-but-box span.bank-add-but-add{ margin-left:168px;}
+
+
+
+
+
+
+
+
+
+

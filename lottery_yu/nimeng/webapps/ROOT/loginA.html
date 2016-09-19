@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>用户登陆</title>
+<link type="text/css" rel="stylesheet" href="css/style.css" />
+<link type="text/css" rel="stylesheet" href="css/login.css" />
+<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="js/jquery.md5.js"></script>
+<script type="text/javascript" src="js/jquery.jsonp.js"></script>
+
+<script type="text/javascript" src="js/jquery.cookie.js"></script>
+<script type="text/javascript" src="js/pupil-ajax.js"></script>
+<script type="text/javascript" src="js/b.js"></script>
+<script type="text/javascript" src="js/style.js"></script>
+<script type="text/javascript" src="js/login.js"></script>
+</head>
+
+<body>
+		<div class="login-top"></div>
+	<div class="login-box">
+    	<div class="login-logo"></div>
+        <form id="regForm"  method="post">
+        	<div class="login-form">
+            	<input class="input username" type="text" name="mobile" id ="mobile"  placeholder="请输入手机号" value="18021401774"  maxlength = 11 />
+                <span class="input-prompt _error"></span>
+                <input class="input password" type="password" id ="password" name="password" placeholder="请输入密码" value="401774" maxlength = 18/>
+                <span class="input-prompt _error"></span>
+                <div class="remember">
+                	<div class="fl">
+                    	<label><input type="checkbox" checked="checked" />&nbsp;记住我</label>
+                    </div>
+                    <span class="prompt">忘记密码请联系客服：4007-100-123</span>
+                </div>
+                <span class="input-prompt _success"></span>
+                <span class="input-prompt _error" id = "login_error"></span>
+                <div class="submit-but">
+                	<a class="but login-but" type="submit" id= "loginBtn" value="登陆">登陆</a>
+                    <a class="but register-but" href="registerA.html">注册</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

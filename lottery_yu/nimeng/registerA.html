@@ -1,0 +1,320 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>用户注册</title>
+<link type="text/css" rel="stylesheet" href="css/style.css" />
+<link type="text/css" rel="stylesheet" href="css/register.css" />
+<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="js/jquery.md5.js"></script>
+<script type="text/javascript" src="js/jquery.jsonp.js"></script>
+
+<script type="text/javascript" src="js/jquery.cookie.js"></script>
+<script type="text/javascript" src="js/pupil-ajax.js"></script>
+<script type="text/javascript" src="js/b.js"></script>
+<script type="text/javascript" src="js/register.js"></script>
+</head>
+
+<body>
+	<div class="public-top min-cen">
+    	<div class="center logo"></div>
+    </div>
+    <div class="content center">
+    	<div class="register-top">快速注册</div>
+		<form  method="post" id="registerForm" enctype="multipart/form-data">
+        <div class="center clear" id="register_1">
+
+            <div class="register-left">
+                <div class="register-title">
+                    <i></i>
+                    <span>设置您的账号信息</span>
+                </div>
+                <div class="register-li">
+                    <label class="register-label">手机号:<span>*</span></label>
+                    <input class="register-input" type="text" name="expertPhoneNum"  id="expertPhoneNum" value="" />
+                </div>
+                <div class="register-li">
+                    <label class="register-label">验证码:<span>*</span></label>
+                    <input class="register-input verificationCodet" type="text" name="verifyCode" id="verifyCode" value="" />
+                    <a class="verificationCodet-but"  id="sendCode">获取验证码</a>
+                </div>
+                <div class="register-title">
+                    <i></i>
+                    <span>心理咨询师资格和个人信息</span>
+                </div>
+                <div class="register-li">
+                    <label class="register-label">姓名:<span>*</span></label>
+                    <input class="register-input" type="text" name="realName"  id="realName" value="" />
+                </div>
+                <div class="register-li">
+                    <label class="register-label">性别:<span>*</span></label>
+                    <label class="register-label-box">
+                        <input class="register-radio" type="radio" name="gender" id="gender" value="1" />
+                        先生
+                    </label>
+                    <label class="register-label-box">
+                        <input class="register-radio" type="radio" name="gender" id="gender"value="0" />
+                        女士
+                    </label>
+                </div>
+                <div class="register-li">
+                    <label class="register-label">出生日期:</label>
+					<input type="text"  class="register-input ui-datepicker" id="birthStr" name="birthStr" placeholder="请选择日期.."/>
+                   <!-- <select class="register-select">
+                        <option value="1980">1980</option>
+                    </select>
+                    <span class="register-select-span">年</span>
+                    <select class="register-select">
+                        <option value="11">11</option>
+                    </select>
+                    <span class="register-select-span">月</span>
+                    <select class="register-select">
+                        <option value="30">30</option>
+                    </select>
+                    <span class="register-select-span">日</span>-->
+                </div>
+                <div class="register-li">
+                    <label class="register-label">身份证号码:<span>*</span></label>
+                    <input class="register-input" type="text" name="ID"  id="ID" value="" />
+                </div>
+                <div class="register-li">
+                    <label class="register-label">学历:</label>
+                    <select class="register-select" name="education" id="education" style="width:100px;">
+                        <option value="本科">本科</option>
+						<option value="硕士">硕士</option>
+						<option value="博士">博士</option>
+						<option value="海归本科">海归本科</option>
+						<option value="海归硕士">海归硕士</option>
+						<option value="海归博士">海归博士</option> 
+                    </select>
+                    <span class="register-select-span">婚恋状态</span>
+                    <select class="register-select" id="marriage" name= "marriage" style="width:105px;">
+                        <option value="已婚">已婚</option>
+						<option value="未婚">未婚</option>
+						<option value="离异单身">离异单身</option>
+						<option value="离异带小孩">离异带小孩</option>
+                    </select>
+                </div>
+                <div class="register-li">
+                    <label class="register-label">目前所在地:<span>*</span></label>
+                   <!-- <select class="register-select" style="width:90px;">
+                        <option value=""></option>
+                    </select>
+					-->
+                    <span class="register-select-span">省/市</span>
+					<input type="text" class="register-input" id="province" name="province"/>
+                    <!--<select class="register-select" style="width:85px;">
+                        <option value=""></option>
+                    </select>-->
+                    <span class="register-select-span">市/地区</span>
+					<input type="text" class="register-input" id="city" name="city"/>
+                </div>
+                <div class="register-li">
+                    <label class="register-label">专业资质:<span>*</span></label>
+                    <select class="register-select" style="width:272px;" id="position" name="position">
+                        <option value="国家三级心理咨询师">国家三级心理咨询师</option>
+                    </select>
+                </div>
+                <div class="register-li">
+                    <label class="register-label">QQ:<span>*</span></label>
+                    <input class="register-input" type="text" name="qqNumber" id="qqNumber" value="" />
+                </div>
+                <div class="register-li">
+                    <label class="register-label">邮箱地址:<span>*</span></label>
+                    <input class="register-input" type="text" name="eMail" id="eMail" value="" />
+                </div>
+            </div>
+            <div class="register-right">
+                <span class="register-pic-title">个人照片</span>
+                <span class="register-pic-img"><img src="images/pic.jpg" alt="" /></span>
+                <div class="register-pic-box">
+                    <div class="register-file-val"></div>
+                    <div class="register-file-but">浏览</div>
+                    <input class="register-file" type="file" id="portrait" name="portrait"/>
+                </div>
+                <div class="register-pic-box">
+                    <span class="register-pic-prompt">格式要求：jpg、png</span>
+                    <span class="register-pic-prompt">尺寸要求：200*250px</span>
+                </div>
+                <div class="register-pic-box">
+                    <button class="register-pic-submit" >上传</button>
+                </div>
+                <div class="register-li">
+                    <label class="register-label">个性签名:<span>*</span></label>
+                    <textarea class="register-textarea" name="slogan" id="slogan"></textarea>
+                </div>
+                <div class="register-li">
+                    <label class="register-label">服务时间:<span>*</span></label>
+                    <input class="register-input register-input-time" type="text" name="timeUnit" id="timeUnit" value="" />
+                    <span class="register-input-lable">分钟</span>
+                </div>
+                <div class="register-li">
+                    <label class="register-label">心理咨询费:<span>*</span></label>
+                    <span class="register-input-lable" style="width:70px;">语音咨询</span>
+                    <input class="register-input register-input-price" type="text" name="callPriceN" id="callPriceN" value="" />
+                    <span class="register-input-lable">元/单位时间<span class="prompt">（无此服务填0）</span></span>
+                </div>
+                <div class="register-li">
+                    <label class="register-label">&nbsp;</label>
+                    <span class="register-input-lable" style="width:70px;">文字咨询</span>
+                    <input class="register-input register-input-price" type="text" name="textPriceN" id="textPriceN" value="" />
+                    <span class="register-input-lable">元/单位时间<span class="prompt">（无此服务填0）</span></span>
+                </div>
+                <div class="register-li">
+                    <label class="register-label">&nbsp;</label>
+                    <span class="register-input-lable">面对面咨询</span>
+                    <input class="register-input register-input-price" type="text" name="f2fPriceN" id="f2fPriceN" value="" />
+                    <span class="register-input-lable">元/单位时间<span class="prompt">（无此服务填0）</span></span>
+                </div>
+            </div>
+        </div>
+        <!--第二步-->
+		<div class="content-two clear"  id="register_2" style="display:none">
+        	<div class="content-li">
+                <div class="register-title register-title-left">
+                    <i></i>
+                    <span>擅长领域</span>
+                    <span class="prompt">*</span>
+                </div>
+                <div class="register-li register-li-right">
+                    <div class="register-li-column">
+                    	<label><input type="checkbox" name="expertise" id="expertise" value="1" />儿童孤独症</label>
+                        <label><input type="checkbox" name="expertise" id="expertise"  value="2" />儿童孤独症</label>
+                        <label><input type="checkbox" name="expertise" id="expertise"  value="3" />儿童孤独症</label>
+                        <label><input type="checkbox" name="expertise" id="expertise"  value="4" />儿童孤独症</label>
+                    </div>
+                    <div class="register-li-column">
+                    	<label><input type="checkbox" name="expertise" id="expertise"   value="5" />强迫症</label>
+                        <label><input type="checkbox" name="expertise" id="expertise"  value="6" />强迫症</label>
+                        <label><input type="checkbox" name="expertise" id="expertise"   value="7" />强迫症</label>
+                        <label><input type="checkbox" name="expertise" id="expertise"   value="8" />强迫症</label>
+                    </div>
+                    <div class="register-li-column">
+                    	<label><input type="checkbox" name="expertise" id="expertise"   value="9" />焦虑症</label>
+                        <label><input type="checkbox" name="expertise" id="expertise"   value="10" />焦虑症</label>
+                        <label><input type="checkbox" name="expertise" id="expertise"   value="11" />焦虑症</label>
+                        <label><input type="checkbox" name="expertise" id="expertise"   value="12" />焦虑症</label>
+                    </div>
+                    <div class="register-li-column">
+                    	<label><input type="checkbox" name="expertise" id="expertise"   value="13" />狂躁症</label>
+                        <label><input type="checkbox" name="expertise" id="expertise"   value="14" />狂躁症</label>
+                        <label><input type="checkbox" name="expertise" id="expertise"   value="15" />狂躁症</label>
+                        <label><input type="checkbox" name="expertise" id="expertise"   value="16" />狂躁症</label>
+                    </div>
+                    <div class="register-li-column">
+                    	<label class="blue"><input type="checkbox" name="expertise" id="expertise"   value="17" />社交恐怖症</label>
+                        <label class="blue"><input type="checkbox" name="expertise" id="expertise"   value="18" />社交恐怖症</label>
+                        <label class="blue"><input type="checkbox" name="expertise" id="expertise"   value="19" />社交恐怖症</label>
+                        <label class="blue"><input type="checkbox" name="expertise" id="expertise"   value="20" />社交恐怖症</label>
+                    </div>
+                </div>
+            </div>  
+            <div class="content-li">
+            	<div class="register-title register-title-left">
+                    <i></i>
+                    <span>学历背景</span>
+                    <span class="prompt">*</span>
+                </div>
+                <div class="register-li register-li-right">
+                    <textarea class="register-li-textarea" name="background" id="background"></textarea>
+                </div>
+            </div>  
+            <div class="content-li">
+            	<div class="register-title">
+                    <i></i>
+                    <span>身份证明</span>
+                    <span class="prompt">*</span>
+                </div>
+                <div class="register-li" style="margin-bottom:30px;">
+                	<div class="register-file-content">
+                    	<span class="register-file-title">正面</span>
+                   		<span class="register-file-img"><img src="" alt="" /></span>
+                        <div class="register-file-box">
+                            <div class="register-file-val"></div>
+                            <div class="register-file-but">浏览</div>
+                            <input class="register-file" type="file" id="IDPicF" name="IDPicF" />
+                        </div>
+                        <div class="register-file-box">
+                        	<div class="register-file-frame">
+                            	<span>格式要求：jpg、png</span>
+                                <span>尺寸要求：300*200px</span>
+                            </div>
+                            <a class="register-file-submit" href="javascript:;">上传</a>
+                        </div>
+                    </div>
+                    <div class="register-file-content">
+                    	<span class="register-file-title">反面</span>
+                   		<span class="register-file-img"><img src="" alt="" /></span>
+                        <div class="register-file-box">
+                            <div class="register-file-val"></div>
+                            <div class="register-file-but">浏览</div>
+                            <input class="register-file" type="file" id="IDPicB" name="IDPicB"/>
+                        </div>
+                        <div class="register-file-box">
+                        	<div class="register-file-frame">
+                            	<span>格式要求：jpg、png</span>
+                                <span>尺寸要求：300*200px</span>
+                            </div>
+                            <a class="register-file-submit" href="javascript:;">上传</a>
+                        </div>
+                    </div>
+                </div>
+            </div>  
+        </div>
+		<!--第三步-->
+		<div class="content-three clear" id="register_3" style="display:none"> 
+                <div class="content-li">
+                    <div class="register-li" style="margin-bottom:30px;">
+                        <div class="register-file-content">
+                            <span class="register-file-title font-bold">资政证书</span>
+                            <span class="register-file-img"><img src="" alt="" /></span>
+                            <div class="register-file-box">
+                                <div class="register-file-val"></div>
+                                <div class="register-file-but">浏览</div>
+                                <input class="register-file" type="file" id="qualificationPic" name="qualificationPic"/>
+                            </div>
+                            <div class="register-file-box">
+                                <div class="register-file-frame">
+                                    <span>格式要求：jpg、png</span>
+                                    <span>尺寸要求：400*600px</span>
+                                </div>
+                                <a class="register-file-submit" href="javascript:;">上传</a>
+                            </div>
+                        </div>
+                        <div class="register-file-content">
+                            <span class="register-file-title font-bold">背景图</span>
+                            <span class="register-file-img"><img src="" alt="" /></span>
+                            <div class="register-file-box">
+                                <div class="register-file-val"></div>
+                                <div class="register-file-but">浏览</div>
+                                <input class="register-file" type="file" id="backgroundPic" name="backgroundPic" />
+                            </div>
+                            <div class="register-file-box">
+                                <div class="register-file-frame">
+                                    <span>格式要求：jpg、png</span>
+                                    <span>尺寸要求：400*600px</span>
+                                </div>
+                                <a class="register-file-submit" href="javascript:;">上传</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style=" width:100%; overflow:hidden; margin-bottom:30px;">
+                	<label class="Agreement"><input type="checkbox" name="" value="" checked />我已阅读并同意<a href="javscript:;">《柠檬心里服务条款》</a></label>
+                </div>
+                <input class="three-submit" type="button" name="" id="registerBtn" value="提交注册">
+				<div style="height:30px;"></div> 
+        </div> 
+		</form> 
+		<div class="page">
+			<a class="page-prev" href="javascript:;" value=1 style="display:none">上一页</a>
+        	<a class="but active" href="javascript:;">1</a>
+            <a class="but" href="javascript:;">2</a>
+            <a class="but" href="javascript:;">3</a>
+            <a class="page-next" href="javascript:;" value=1 >下一页</a>
+        </div>    
+    </div>  
+	
+	
+</body>
+</html>

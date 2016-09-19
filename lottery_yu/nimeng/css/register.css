@@ -1,0 +1,86 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* ****************************************************************
+ * public css
+ * ***************************************************************/
+.font-bold{ font-weight:bold;}
+
+/* ****************************************************************
+ * register css
+ * ***************************************************************/
+.register-top{ display:block; width:100%; margin-top:20px; line-height:60px; text-align:center; font-size:30px; font-weight:bold; color:#17b2e6;}
+.register-left{ width:auto; height:auto; overflow:hidden; float:left; padding-left:54px;}
+.content{ height:auto; overflow:hidden; border-left:solid 1px #cccccc; border-right:solid 1px #cccccc;}
+.register-title{ width:auto; height:auto; overflow:hidden; margin:30px 0 25px 0;}
+.register-title i{ display:block; width:20px; height:20px; float:left; margin-right:10px; background-color:#22c3f9;}
+.register-title span{ display:block; width:auto; float:left; line-height:20px; font-size:16px; color:#323232;}
+.register-li{ width:auto; height:auto; overflow:hidden; padding-left:30px; margin-bottom:18px;}
+.register-label{ float:left; width:110px; padding-right:10px; line-height:28px; text-align:right;}
+.register-label span{ color:#F52327;}
+.register-input{ float:left; width:260px; height:26px; padding-left:10px; border:solid 1px #cccccc; line-height:26px; font-size:12px; color:#323232;}
+.register-li .verificationCodet{ width:120px; margin-top:5px;}
+.register-li .verificationCodet-but{ float:left; width:120px; height:36px; margin-left:19px; background-color:#22bff3; border-radius:5px; background:url(../images/submit-bg.jpg) repeat-x left top; text-align:center; line-height:36px; font-size:16px; color:#ffffff;}
+.register-li .register-label-box{ float:left; margin-right:15px;}
+.register-li .register-select{ display:block; width:auto; height:28px; float:left; margin-right:5px; padding:0 10px; border:solid 1px #cccccc; line-height:28px; font-size:12px; color:#323232;}
+.register-li .register-select-span,.register-input-lable{ display:block; width:auto; float:left; margin-right:5px; line-height:28px; font-size:14px; color:#323232;}
+
+.register-right{ width:auto; height:auto; overflow:hidden; float:left;}
+.register-pic-title{ display:block; width:500px; text-align:center; line-height:36px; font-size:16px; color:#323232;}
+.register-pic-img{ display:block; width:200px; height:250px; overflow:hidden; margin:0 auto; box-shadow:0 3px 3px #000000; margin-bottom:15px;}
+.register-pic-box{ width:202px; height:auto; overflow:hidden; margin:0 auto;}
+.register-file{ display:none;}
+.register-file-val{ width:139px; height:22px; overflow:hidden; float:left; padding-left:10px; border:solid 1px #cccccc; border-right:none; line-height:22px; font-size:12px; color:#323232;}
+.register-file-but{ width:50px; height:24px; float:left; background-color:#21bdf2; cursor:pointer; text-align:center; line-height:24px; font-size:14px; color:#ffffff;}
+.register-pic-prompt{ display:block; line-height:24px; font-size:12px; color:#323232;}
+.register-pic-submit{ display:block; width:80px; height:30px; float:right; margin:5px 0 20px 0; background:url(../images/submit-bg.jpg) repeat-x left top; border-radius:6px; text-align:center; line-height:30px; font-size:16px; color:#ffffff; cursor:pointer;}
+.register-textarea{ width:252px; height:74px; overflow:hidden; padding:10px 10px; border:solid 1px #cccccc; resize:none; line-height:20px; font-size:12px; color:#323232;}
+.register-input-time{ width:180px;}
+.register-input-lable{ margin:0 10px 0 10px;}
+.register-input-lable span.prompt{ color:#FF1D21;}
+.register-input-price{ width:60px;}
+
+.page{ width:100%; height:auto; overflow:hidden; padding:30px 0; margin-bottom:100px; text-align:center; line-height:36px;}
+.page .but{ display:inline-block; height:24px; line-height:24px; padding:0 6px; margin:0 5px; color:#323232;}
+.page .but.active{ border:solid 1px #3ecfff;}
+.page-next,.page-prev{ display:inline-block; width:100px; height:36px; border-radius:6px; background:url(../images/submit-bg.jpg) repeat-x left top; text-align:center; line-height:36px; font-size:16px; color:#ffffff;}
+
+/* ****************************************************************
+ * register two css
+ * ***************************************************************/
+.content-two{ width:900px; margin:0 auto; padding-top:30px;}
+.content-li{ width:100%; height:auto; overflow:hidden;}
+.content-li .register-title{ margin-top:0;}
+.register-title-left{ float:left; width:150px;}
+.content-li .register-title{ width:150px;}
+.content-li span.prompt{ float:right; color:#FF3437;}
+.register-li-right{ float:left; padding-left:10px;}
+.register-li-column{ width:auto; overflow:hidden; float:left; margin-right:20px;}
+.register-li-column label{ display:block; line-height:28px; margin-bottom:5px;}
+.register-li-column label input{ margin-right:5px;}
+.register-li-column label.blue{ color:#17b2e6;}
+.register-li-textarea{ width:456px; height:90px; overflow:hidden; padding:6px 10px; border:solid 1px #cccccc; resize:none; line-height:24px; font-size:12px; color:#323232;}
+.register-file-content{ width:auto; overflow:hidden; float:left; margin-right:50px;}
+.register-file-title{ display:block; width:302px; height:auto; overflow:hidden; text-align:center; line-height:66px; font-size:16px; color:#323232;}
+.register-file-img{ display:block; width:300px; height:200px; overflow:hidden; border:solid 1px #cccccc; margin-bottom:12px;}
+.register-file-img img{ width:100%; height:100%;}
+.register-file-box{ width:302px; overflow:hidden; margin-bottom:5px;}
+.register-file-box .register-file-val{ width:230px;}
+.register-file-box .register-file-but{ width:60px;}
+.register-file-frame{ width:auto; overflow:hidden; float:left;}
+.register-file-frame span{ display:block; width:auto; line-height:22px; font-size:12px; color:#323232;}
+.register-file-submit{ display:block; float:right; width:80px; height:30px; margin-top:8px; background:url(../images/submit-bg.jpg) repeat-x left top; border-radius:6px; text-align:center; line-height:30px; font-size:16px; color:#ffffff;}
+
+
+/* ****************************************************************
+ * register three css
+ * ***************************************************************/
+ .content-three{ width:760px; margin:0 auto; padding-top:30px;}
+.Agreement{ display:block; float:left; margin-left:80px;}
+.Agreement input{ margin-right:5px;}
+.Agreement a{ color:#1cb8eb;}
+.three-submit{ display:block; width:120px; height:36px; margin:0 auto; border-radius:6px; background:url(../images/submit-bg.jpg) repeat-x left top; line-height:36px; text-align:center; font-size:16px; color:#ffffff; cursor:pointer;}
+
+
+
+

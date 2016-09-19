@@ -1,0 +1,151 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>提现记录</title>
+<link type="text/css" rel="stylesheet" href="../css/style.css" />
+<link type="text/css" rel="stylesheet" href="../css/income.css" />
+<script type="text/javascript" src="../js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="../js/jquery.md5.js"></script>
+<script type="text/javascript" src="../js/jquery.jsonp.js"></script>
+
+<script type="text/javascript" src="../js/jquery.cookie.js"></script>
+<script type="text/javascript" src="../js/pupil-ajax.js"></script>
+<script type="text/javascript" src="../js/b.js"></script>
+<script type="text/javascript" src="../js/style.js"></script>
+
+</head>
+
+<body>
+	<div class="public-top min-cen">
+    	<div class="center logo"></div>
+    </div>
+    <div class="content center public">
+   		<div class="menu">
+        	<a class="menu-li" href="javascript:;">
+            	<span class="menu-title">个人信息</span>
+                <span class="menu-min-title">Personal Information</span>
+            </a>
+            <a class="menu-li" href="javascript:;">
+            	<span class="menu-title">咨询管理</span>
+                <span class="menu-min-title">Consulting Management</span>
+            </a>
+            <a class="menu-li" href="javascript:;">
+            	<span class="menu-title">预约管理</span>
+                <span class="menu-min-title">Booking Management</span>
+            </a>
+            <a class="menu-li" href="javascript:;">
+            	<span class="menu-title">收入记录</span>
+                <span class="menu-min-title">Income Record</span>
+            </a>
+            <a class="menu-li active" href="javascript:;">
+            	<span class="menu-title">提现记录</span>
+                <span class="menu-min-title">Present Record</span>
+            </a>
+        </div>
+        <div class="puclic-right">
+        	<div class="income-top">
+            	<div class="income-title">可提现金额：<span class="blue" id="unWithDrawedMoney">￥4500.99</span></div>
+                <div class="income-title">不可提现金额：<span class="red" id="withDrawedMoney">￥4400.00</span></div>
+                <!--a class="income-but" href="javascript:;">提现</a-->
+                <span class="prompt">提现成功后，1-.3个工作日到账</span>
+            </div>
+        	<div class="center-frame withdrawal">
+            	<div class="income-head icon-head">
+                	<span class="month">提现月份</span>
+                    <span class="money">操作金额</span>
+                    <span class="status">操作现状</span>
+                    <span class="time">提现时间</span>
+                </div>
+                <div class="income-body" id="moneyLogList">
+                	<div class="income-li">
+                    	<span class="month">2016年4月</span>
+                        <span class="money">提现<span class="blue">￥400</span></span>
+                        <span class="status">交易成功</span>
+                        <span class="time">今天<br/>14:23</span>
+                    </div>
+					 
+                </div>
+                <div class="page">
+                    <div class="page-right">
+                        <a id="moneyLogListPre" style="display:none">上一页</a>
+                        <a class="active" id="moneyLogListNext">下一页</a> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+	<script> 
+		$(function(){ 
+			getMoneyLogList(1,null);
+			$("#moneyLogListPre").click(function(){
+				var page = $(this).attr("value");
+				if(page==2){
+					$(this).css("display","block");
+				}
+				$(this).attr("value",parseInt(page)-1);
+				getMoneyLogList(page,null);
+			});
+			$("#moneyLogListNext").click(function(){
+				var page = $(this).attr("value");
+				if(page==2){
+					$(this).css("display","block");
+				}
+				$(this).attr("value",parseInt(page)+1);
+				getMoneyLogList(page,null);
+			});
+			
+			$("#moneyLogListSearch").click(function(){
+				var searchStr = $("#searchStr").val(); 
+				getMoneyLogList(1,searchStr);
+			});
+			
+		});
+		
+		//获取未接单预约咨询订单
+		function getMoneyLogList(page,desc){
+			var expertId = $.cookie("expertId");
+			ajaxPostJson(requestUrl + "/emoney/getMoneyLogListA", function(data, status){
+				eval("rt=" + data);
+				if (rt.error!="") {
+					$("#moneyLogListNext").css("display","none");
+					alert(rt.error);
+				}else{ 
+					var drawList =  rt.logList;
+					var unWithDrawedMoney = rt.unWithDrawedMoney;
+					var withDrawedMoney =rt.withDrawedMoney;
+					$("unWithDrawedMoney").html(unWithDrawedMoney);
+					$(withDrawedMoney).html(withDrawedMoney);
+					var htmlStr ="";
+					if(typeof(drawList)!="undefined"){
+						$.each(drawList,function(draw){
+						    var list=drawList[draw];
+						htmlStr+= "<div class=\"income-li\">"
+								+"<span class=\"month\">"+list.addTime+"</span>"
+								+"<span class=\"money\">提现<span class=\"blue\">￥"+list.money+"</span></span>"
+								+"<span class=\"status\">"+getDrawStatus(list.status)+"</span>"
+								+"<span class=\"time\">"+list.addTime+"</span>"
+								+"</div>";
+						}); 
+					}
+
+					$("#moneyLogList").html(htmlStr);
+				}
+			}, {"from":"expert","currentpage":page,"desc":desc,"expertId":expertId,"debug":1});
+		}
+		
+		function getDrawStatus(status){
+			var status=status;
+			if(status=="1"){
+                status="提现中";
+			}else if(status==2){
+                status="已提现";
+			}else{
+                status="提现失败";
+            }
+			return status;
+		}
+		
+	</script> 
+</body>
+</html>

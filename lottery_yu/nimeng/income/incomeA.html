@@ -1,0 +1,489 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>收入记录</title>
+<link type="text/css" rel="stylesheet" href="../css/style.css" />
+<link type="text/css" rel="stylesheet" href="../css/income.css" />
+<script type="text/javascript" src="../js/jquery-1.11.2.min.js"></script> 
+
+<script type="text/javascript" src="../js/jquery.cookie.js"></script>
+<script type="text/javascript" src="../js/pupil-ajax.js"></script>
+<script type="text/javascript" src="../js/b.js"></script>
+<script type="text/javascript" src="../js/style.js"></script>
+</head>
+
+<body>
+	<div class="public-top min-cen">
+    	<div class="center logo"></div>
+    </div>
+    <div class="content center public">
+   		<div class="menu">
+        	<a class="menu-li" href="javascript:;">
+            	<span class="menu-title">个人信息</span>
+                <span class="menu-min-title">Personal Information</span>
+            </a>
+            <a class="menu-li" href="javascript:;">
+            	<span class="menu-title">咨询管理</span>
+                <span class="menu-min-title">Consulting Management</span>
+            </a>
+            <a class="menu-li" href="javascript:;">
+            	<span class="menu-title">预约管理</span>
+                <span class="menu-min-title">Booking Management</span>
+            </a>
+            <a class="menu-li active" href="javascript:;">
+            	<span class="menu-title">收入记录</span>
+                <span class="menu-min-title">Income Record</span>
+            </a>
+            <a class="menu-li" href="javascript:;">
+            	<span class="menu-title">提现记录</span>
+                <span class="menu-min-title">Present Record</span>
+            </a>
+        </div>
+        <div class="puclic-right">
+        	<div class="income-top">
+            	<div class="income-title">可提现金额：<span class="blue" id="withDrawMoney">￥4500.99</span></div>
+                <div class="income-title">不可提现金额：<span class="red" id="disWithDrawMoney">￥4400.00</span></div>
+                <a class="income-but" type="submit" id="drawMoneyBtn">提现</a>
+                <span class="prompt">提现成功后，1-.3个工作日到账</span>
+            </div>
+        	<div class="center-frame income">
+            	<div class="income-head icon-head">
+                	<span class="id">ID</span>
+                    <span class="type">服务形式</span>
+                    <span class="price">价格</span>
+                    <span class="desc">描述</span>
+                    <span class="user">用户</span>
+                    <span class="time">生成时间</span>
+                    <span class="status">状态
+                    	<i class="icon"></i>
+                        <span class="prompt">未联系接单前，用户可以申请退款，请与用户联系预约并确定第一次服务形式和时间。</span>
+                    </span>
+                </div>
+                <div class="income-body" id="incomeList">
+                	<div class="income-li">
+                    	<span class="id">10233848</span>
+                        <span class="type">咨询服务</span>
+                        <span class="price">￥400.00</span>
+                        <span class="desc">文字咨询<br/>2/6</span>
+                        <span class="user">张芳&nbsp;&nbsp;20岁<br/>女</span>
+                        <span class="time">2016-05-09<br/>14:23</span>
+                        <span class="status">提现中</span>
+                    </div> 
+                </div>
+                <div class="page">
+                    <div class="page-right">
+                        <a  id="incomeListPre" style="display:none;">上一页</a>
+                        <a class="active"  id="incomeListNext" value="2">下一页</a> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+    <div class="window income-no" style=" display:none;">
+    	<div class="window-bg"></div>
+    	<div class="window-frame clear">
+        	<div class="window-out">X</div>
+        	<div class="income-body">
+            	<div class="income-no-li clear">
+                	<span class="label">提取月份</span>
+                    <select class="select" name="" id="income-no-month"> 
+                    </select>
+                    <span class="prompt">提示： 可提现￥0.00</span>
+                </div>
+            	<div class="income-no-li clear">
+                	<span class="label">未添加银行卡</span>
+                </div>
+            	<div class="income-bank">
+                	<div class="income-bank-prompt">无法提现</div>
+                    <div class="income-bank-li">
+                    	<div class="income-bank-img"><img src="" alt="" /></div>
+                        <span class="income-bank-title">支付宝</span>
+                        <a class="income-bank-binding" id="zhifubaoBtn">绑定</a>
+                    </div>
+                    <div class="income-bank-li">
+                    	<div class="income-bank-img"><img src="" alt="" /></div>
+                        <span class="income-bank-title">微信支付</span>
+                        <a class="income-bank-binding" id="weixinBtn">绑定</a>
+                    </div>
+                    <div class="income-bank-li">
+                    	<span class="income-bank-add">+</span>
+                        <span class="income-bank-title">银行卡</span>
+						<a class="income-bank-binding" id="yinhangkaBtn">绑定</a>
+                    </div>
+                    <div class="income-but-box">
+                    	<span class="income-but-out">取消</span>
+                        <span class="income-but-add">立即添加</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="window weixin"  id ="weixinWin"style=" display:none;">
+	  	<div class="window-bg"></div>
+    	<div class="window-frame clear">
+        	<div class="window-out">X</div>
+        	<div class="weixin-body">
+            	<div class="weixin-title">绑定微信</div>
+                <div class="weixin-li">
+                	<span>账号名：</span>
+                    <input class="" type="text" name="" value="" id="weixinName" />
+                </div>
+                <div class="weixin-li">
+                	<span>支付账号：</span>
+                    <input class="" type="text" name="" value="" id="weixinNo" />
+                </div>
+                <div class="weixin-but">
+                	<span class="out">取消</span>
+                    <span class="determine" id="weixinblondBtn">确定</span>
+                </div>
+            </div>
+        </div>
+    </div>
+	<div class="window weixin" id="zhifubaoWin" style=" display:none;">
+	  	<div class="window-bg"></div>
+    	<div class="window-frame clear">
+        	<div class="window-out">X</div>
+        	<div class="weixin-body">
+            	<div class="weixin-title">绑定支付宝</div>
+                <div class="weixin-li">
+                	<span>账号名：</span>
+                    <input class="" type="text" name="" value="" id="zhifubaoName" />
+                </div>
+                <div class="weixin-li">
+                	<span>支付账号：</span>
+                    <input class="" type="text" name="" value="" id="zhifubaoNo" />
+                </div>
+                <div class="weixin-but">
+                	<span class="out">取消</span>
+                    <span class="determine" id="zhifubaoblondBtn" >确定</span>
+                </div>
+            </div>
+        </div>
+    </div>
+	<div class="window bank-add" style=" display:none;">
+    	<div class="window-bg"></div>
+    	<div class="window-frame clear">
+        	<div class="window-out">X</div>
+        	<div class="bank-add-frame">
+            	<div class="title">添加银行卡</div>
+                <div class="bank-add-li">
+                	<div class="frame">
+                    	<span class="label">持卡人：</span>
+                        <input class="input" name="" value="" id="pname" />
+                    </div>
+                    <span class="id-num">身份证：3202344534443333232</span>
+                </div>
+                <div class="bank-add-li">
+                	<span class="text">请绑定持卡人的银行卡</span>
+                </div>
+                <div class="bank-add-li">
+                <div class="bank-add-box">
+                    	<div class="input-box">
+                        	<span class="label">银行：</span>
+                            <select class="select"   id = "bankName">
+                            	<option value="中国银行">中国银行</option>
+								<option value="建设银行">建设银行</option> 
+                            </select>
+                        </div>
+                        <div class="input-box">
+                        	<span class="label">省份城市：</span>
+                            <select class="select" name="" id="city">
+                            	<option value="">江苏省南京市</option>
+                            </select>
+                        </div>
+                    </div>
+                	<div class="bank-add-box">
+                    	<div class="input-box">
+                        	<span class="label">开户行：</span>
+                            <input class="input" type="text" name="" value="" id="bankDetail"/>
+                        </div>
+                        <div class="input-box">
+                        	<span class="label">卡号：</span>
+                            <input class="input" type="text" name="" value=""  id="bankNo"/>
+                        </div>
+                    </div>
+                    <div class="bank-add-but-box">
+                    	<span class="bank-add-but-out">取消</span>
+                        <span class="bank-add-but-add" id="bankAddBtn">确认</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+	
+	<div class="window income-choose" style=" display:none;">
+    	<div class="window-bg"></div>
+    	<div class="window-frame clear">
+        	<div class="window-out">X</div>
+        	<div class="income-body">
+            	<div class="income-choose-li clear">
+                	<span class="label">提取时间</span>
+                    <select class="select" name="" id="income_month"> 
+                    </select>
+                    <span class="prompt">提示： 可提现￥0.00</span>
+                </div>
+            	<div class="income-choose-li clear">
+                	<span class="label">已添加账户</span>
+                </div>
+            	<div class="income-bank" id="weixin_zhifubao">
+                    <div class="income-bank-li">
+                    	<div class="income-bank-img"><img src="" alt="" /></div>
+                        <span class="income-bank-title">支付宝</span>
+                        <span class="income-bank-user">账号  15xxxxxx343</span>
+                        <input class="income-bank-checkbox" type="checkbox" name="" value="" />
+                    </div> 
+                </div>
+                <div class="income-choose-li clear">
+                	<span class="label">已有银行卡</span>
+                </div>
+                <div class="income-bank" id="bankCard">
+                    <div class="income-bank-li">
+                    	<div class="income-bank-img"><img src="" alt="" /></div>
+                        <span class="income-bank-title">支付宝</span>
+                        <span class="income-bank-user">账号  15xxxxxx343</span>
+                        <input class="income-bank-checkbox" type="checkbox" name="" value="" />
+                    </div> 
+				 </div>
+				 <div class="income-bank">	
+                    <div class="income-bank-li">
+                    	<span class="income-bank-add">+</span>
+                        <span class="income-bank-title">支付宝</span>
+                    </div>
+                    <div class="income-but-box">
+                    	<span class="income-but-out">取消</span>
+                        <span class="income-but-add">确认</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+	<input type = "hidden" value = "" id="withDrawDate"/>
+</body>
+<script>
+    $(function(){
+        getIncomeList(1,null);
+        $("#incomeListPre").click(function(){
+            var page = $(this).attr("value");
+            if(page==2){
+                $(this).css("display","block");
+            }
+            $(this).attr("value",parseInt(page)-1);
+            getIncomeList(page,null);
+        });
+        $("#incomeListNext").click(function(){
+            var page = $(this).attr("value");
+            if(page==2){
+                $(this).css("display","block");
+            }
+            $(this).attr("value",parseInt(page)+1);
+            getIncomeList(page,null);
+        });
+
+        $("#incomeListSearch").click(function(){
+            var searchStr = $("#searchStr").val();
+            getIncomeList(1,searchStr);
+        });
+        //提现按钮
+        $("#drawMoneyBtn").click(function(){
+            var expertId = $.cookie("expertId");
+            ajaxPostJson(requestUrl + "/emoney/getDrawableMonthAndAccountX", function(data, status){
+                eval("rt=" + data);
+                if (rt.error!="") {
+                    alert(rt.error);
+                }else{
+                    var accountList =  rt.accountList;
+                    var monthList = rt.monthList;
+                    var htmlStr ="";
+                    if(monthList!=null){ //判断可提现月份是否存在
+                        $.each(monthList,function(month){
+                            $("#income_month").append("<option value=\""+month.withDrawMoney+"\">"+month.month+"</option>") ;
+                        });
+                        $.each(monthList,function(month){
+                            $("#income-no-month").append("<option value=\""+month.withDrawMoney+"\">"+month.month+"</option>") ;
+                        });
+                    }
+                    if(typeof(accountList)!="undefined" && accountList!=null){//存在提现账户信息
+                        var htmlStr = "";
+                        $.each(accountList,function(account){
+                            if(account.accountType==1 || account.accountType == 2){
+                                $("#weixin_zhifubao").append("<div class=\"income-bank-li\">"
+                                        +"<div class=\"income-bank-img\"><img src=\"\" alt=\"\" /></div>"
+                                        +"<span class=\"income-bank-title\">"+getaccountType(account.accountType)+"</span>"
+                                        +"<span class=\"income-bank-user\" >账号  "+account.account+"</span>"
+                                        +"<input class=\"income-bank-checkbox\" type=\"checkbox\" name=\"\" account=\""+account.account+"\" value=\""+account.accountId+"\" />"
+                                        +"</div>") ;
+                            }else{
+                                $("#bankCard").append("<div class=\"income-bank-li\">"
+                                        +"<div class=\"income-bank-img\"><img src=\"\" alt=\"\" /></div>"
+                                        +"<span class=\"income-bank-title\">"+getaccountType(account.accountType)+"</span>"
+                                        +"<span class=\"income-bank-user\" >账号  "+account.account+"</span>"
+                                        +"<input class=\"income-bank-checkbox\" type=\"checkbox\" name=\"accountCheck\" account=\""+account.account+"\" value=\""+account.accountId+"\" />"
+                                        +"</div>") ;
+                            }
+                        });
+                        $('.window .income-choose').fadeIn();
+                    }else{//不存在体现账号信息 则 新增账号
+                        $('.window .income-no').fadeIn();
+                    }
+                }
+            }, {"from":"expert","expertId":expertId,"debug":1});
+
+
+        });
+        //
+        $("#zhifubaoBtn").click(function(){
+            $('#zhifubaoWin').fadeIn();
+        });
+
+        $("#weixinBtn").click(function(){
+            $('#weixinWin').fadeIn();
+        });
+
+        $("#yinghangkaBtn").click(function(){
+            $('.window.bank-add').fadeIn();
+        });
+
+        //添加银行卡
+        $("#bankAddBtn").click(function(){
+            alert("bankAddBtn");
+            var accountType = 3;
+            var cardOwner = $("#pname").val();
+            var bankName=$("#bankName").val();
+            var bankCity=$("#city").val();
+            var bankAddress=$("#bankDetail").val();
+            var account= $("#bankNo").val();
+            var expertId = $.cookie("expertId");
+            var id=$("idno").val();
+            ajaxPostJson(requestUrl + "/eaccount/addAccountX", function(data, status){
+                eval("rt=" + data);
+                if (rt.error!="") {
+                    alert(rt.error);
+                }else{
+                    alert("保存成功！");
+                }
+
+            },{"from":"expert","accountType":accountType,"account":account,"bankName":bankName,
+                "bankCity":bankCity,"bankAddress":bankAddress,"cardOwner":cardOwner,"ID":"","expertId":expertId,"debug":1});
+        });
+        //添加支付宝
+        $("#zhifubaoblondBtn").click(function(){
+            var accountType =1;
+            var cardOwner = $("#zhifubaoName").val();
+            var account = $("#zhifubaoNo").val();
+            ajaxPostJson(requestUrl + "/eaccount/addAccountX", function(data, status){
+                eval("rt=" + data);
+                if (rt.error!="") {
+                    alert(rt.error);
+                }else{
+                    alert("保存成功！");
+                }
+
+            },{"from":"expert","accountType":accountType,"account":account,"cardOwner":cardOwner,"ID":"","expertId":expertId,"debug":1});
+        });
+        //添加微信支付
+        $("#weixinblondBtn").click(function(){
+            alert("weixinNo");
+            var accountType =2;
+            var cardOwner = $("#weixinname").val();
+            var account = $("#weixinNo").val();
+            ajaxPostJson(requestUrl + "/eaccount/addAccountX", function(data, status){
+                eval("rt=" + data);
+                if (rt.error!="") {
+                    alert(rt.error);
+                }else{
+                    alert("保存成功！");
+                }
+
+            },{"from":"expert","accountType":accountType,"account":account,"cardOwner":cardOwner,"ID":"","expertId":expertId,"debug":1});
+
+        });
+        //提现
+        $(".income-but-add").click(function(){
+            var expertId = $.cookie("expertId");
+            var monthStr = $("#income_month").val();
+            var accountId = $("input[type='checkbox'][name='accountCheck']").val();
+            ajaxPostJson(requestUrl + "/emoney/withDrawMoneyA", function(data, status){
+                eval("rt=" + data);
+                if (rt.error!="") {
+                    alert(rt.error);
+                }else{
+                    alert("保存成功！");
+                }
+
+            },{"from":"expert","monthStr":monthStr,"account":account,"accountId":accountId,"expertId":expertId,"debug":1});
+
+        });
+    });
+    //获取未接单预约咨询订单
+    function getIncomeList(page,desc){
+        var expertId = $.cookie("expertId");
+        ajaxPostJson(requestUrl + "/emoney/getMoneyLogListA", function(data, status){
+            eval("rt=" + data);
+            if (rt.error!="") {
+                $("#incomeListNext").css("display","none");
+                alert(rt.error);
+            }else{
+                var logList =  rt.logList;
+                var withDrawMoney = rt.withDrawMoney;
+                var disWithDrawMoney =rt.disWithDrawMoney;
+                var withDrawDate =rt.withDrawDate;
+                $("#withDrawMoney").html(withDrawMoney);
+                $("#disWithDrawMoney").html(disWithDrawMoney);
+                $("#withDrawDate").html(withDrawDate);
+                var htmlStr ="";
+                if(typeof(logList)!="undefined"){
+                    $.each(logList,function(log){
+                        var list=logList[log];
+                        if(list.type==1){
+                            var service="咨询服务";
+                        }else{
+                            var service="录音收入";
+                        }
+                        htmlStr+= "<div class=\"income-li\">"
+                        +"<span class=\"id\">"+list.logId+"</span>"
+                       +"<span class=\"type\">"+service+"</span>"
+                      +"<span class=\"price\">￥"+list.money+"</span>"
+                       +"<span class=\"desc\">"+list.description.slice(0,4)+"</span>"
+                       +"<span class=\"user\">"+list.userNickName+"&nbsp;&nbsp;岁<br/>"+list.userSex+"</span>"
+                        +"<span class=\"time\">"+list.addTime+"</span>"
+                        +"<span class=\"status\">"+getDrawStatus(list)+"</span>"
+                        +"</div>";
+                    });
+                }
+                $("#incomeList").html(htmlStr);
+            }
+        }, {"from":"expert","currentpage":page,"desc":desc,"expertId":expertId,"debug":1});
+    }
+
+    function getDrawStatus(list){
+        var status = list;
+        if(status==1){
+            var withDrawDate = $("#withDrawDate").val();
+            if(list.addTime<withDrawDate){
+                statu="可提现";
+            }else{
+                statu="不可提现";
+            }
+
+        }else if(status==2){
+            statu="提现中";
+        }else{
+            statu="已提现";
+        }
+        return statu;
+    }
+
+    function getaccountType(accountType){
+        if(accountType==1){
+            return "支付宝";
+        }else if(accountType==2){
+            return "微信";
+        }else{
+            return "银行卡";
+        }
+    }
+</script>
+</html>
+
+

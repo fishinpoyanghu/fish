@@ -1,0 +1,186 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>预约管理</title>
+<link type="text/css" rel="stylesheet" href="../css/style.css" />
+<link type="text/css" rel="stylesheet" href="../css/appointment.css" /> 
+<script type="text/javascript" src="../js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="../js/jquery.md5.js"></script>
+<script type="text/javascript" src="../js/jquery.jsonp.js"></script>
+
+<script type="text/javascript" src="../js/jquery.cookie.js"></script>
+<script type="text/javascript" src="../js/pupil-ajax.js"></script>
+<script type="text/javascript" src="../js/b.js"></script>
+<script type="text/javascript" src="../js/style.js"></script>
+</head>
+
+<body>
+	<div class="public-top min-cen">
+    	<div class="center logo"></div>
+    </div>
+    <div class="content center public">
+   		<div class="menu">
+        	<a class="menu-li" href="javascript:;">
+            	<span class="menu-title">个人信息</span>
+                <span class="menu-min-title">Personal Information</span>
+            </a>
+            <a class="menu-li" href="javascript:;">
+            	<span class="menu-title">咨询管理</span>
+                <span class="menu-min-title">Consulting Management</span>
+            </a>
+            <a class="menu-li active" href="javascript:;">
+            	<span class="menu-title">预约管理</span>
+                <span class="menu-min-title">Booking Management</span>
+            </a>
+            <a class="menu-li" href="javascript:;">
+            	<span class="menu-title">收入记录</span>
+                <span class="menu-min-title">Income Record</span>
+            </a>
+            <a class="menu-li" href="javascript:;">
+            	<span class="menu-title">提现记录</span>
+                <span class="menu-min-title">Present Record</span>
+            </a>
+        </div>
+        <div class="puclic-right">
+        	<div class="center-top">
+            	<a href="./appointmentA.html">
+                	<span class="title">未处理（12）</span>
+                	<span class="min-title">Untreated</span>
+                </a>
+                <a href="./appointment-twoA.html">
+                	<span class="title">处理中（55）</span>
+                	<span class="min-title">In Treatment</span>
+                </a>
+                <a class="active" href="#">
+                	<span class="title">已结束（125）</span>
+                	<span class="min-title">Has Ended</span>
+                </a>
+            </div>
+        	<div class="center-frame">
+				<div class="appointment-search">
+                	<div class="input-box">
+                    	<input class="input" name="" type="text" value="" id="searchStr" placeholder="失恋、文字咨询" />
+                        <input class="submit" type="submit" value="查询" id="handledOrderListSearch"/>
+                    </div>
+                </div>
+                <div class="appointment-frame three">
+                	<div class="appointment-head">
+                		<span class="name">姓名</span>
+                        <span class="between">关系</span>
+                        <span class="sex">性别/年龄</span>
+                        <span class="describe">问题描述</span>
+                        <span class="service">服务内容</span>
+                        <span class="count">已获得/总价</span>
+                        <span class="create-time">完成时间</span>
+                	</div>
+                    <div class="appointment-body" id="handledOrderList">
+                    	<div class="appointment-li">
+                            <span class="name">可爱的柠檬</span>
+                            <span class="between">本人</span>
+                            <span class="sex">女/22</span>
+                            <span class="describe">失恋了很不开心，很不开心，很不开心失恋很不开心…<a href="javascript:;">详情</a></span>
+                            <span class="service">文字*3<br/>语音*2<br/>面对面*1</span>
+                            <span class="count">￥1000/￥1000</span>
+                            <span class="create-time">2016-6-6<br/>12:14:23</span>
+                        </div>
+                         
+                    </div>
+                </div>
+                <div class="page">
+                    <div class="page-right">
+                        <a  id="handledOrderListPre" style="display:none">上一页</a>
+                        <a class="active"  id="handledOrderListNext" >下一页</a> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+    <div class="window describe" style="display:none;">
+    	<div class="window-bg"></div>
+    	<div class="window-frame clear">
+        	<div class="window-out">X</div>
+        	<div class="title">2016年6月12日08:12:30</div>
+        	<div class="text">有人说，失恋是一道逆命题，你一个人做不来，一定要有人成全你，且这个人是你最在乎的人，否则没有杀伤力。单小编认为失恋不过是给自己一个重生的机会，重新认识自己，重新认识世界。</div>
+            <span class="out">收回</span>
+        </div>
+    </div> 
+	<script>
+		$(function(){ 
+			getHandledOrderList(1,null);
+			$("#handledOrderListNextPre").click(function(){
+				var page = $(this).attr("value");
+				if(page==2){
+					$(this).css("display","block");
+				}
+				$(this).attr("value",parseInt(page)-1);
+				getHandledOrderList(page,null);
+			});
+			$("#handledOrderListNext").click(function(){
+				var page = $(this).attr("value");
+				if(page==2){
+					$(this).css("display","block");
+				}
+				$(this).attr("value",parseInt(page)+1);
+				getHandledOrderList(page,null);
+			});
+			
+			$("#handledOrderListSearch").click(function(){
+				var searchStr = $("#searchStr").val(); 
+				getHandledOrderList(1,searchStr);
+			}); 
+			$('.appointment-li .describe a').click(function(){
+				var description = $(this).attr("description");
+				var ceaterTime = $(this).attr("ceaterTime");
+				$('.window.describe .window-frame .title').html(description);
+				$('.window.describe .window-frame .text').html(description);
+				$('.window.describe').fadeIn();
+			});
+            /******点击详情*****/
+            $(".appointment-frame").delegate(".describe>a","click",function(event){
+                var desc=$(this).attr("description");
+                ajaxPostJson(requestUrl + "/ShowConsultServlet4M", function(data, status){
+                    eval("rt=" + data);
+                    if(rt.error!==""){
+                        alert(rt.error);
+                    }
+                }, {"from":"expert","desc":desc});
+            })
+		});
+		//获取未接单预约咨询订单
+		function getHandledOrderList(page,desc){
+			var expertId = $.cookie("expertId");
+			ajaxPostJson(requestUrl + "/corder/getHandlingOrderListA", function(data, status){
+				eval("rt=" + data);
+				if (rt.error!="") {
+					$("#handledOrderListNext").css("display","none");
+					alert(rt.error);
+				}else{ 
+					var orderList =  rt.orderList; 
+					var htmlStr ="";
+					if(typeof(orderList)!="undefined"){
+						$.each(orderList,function(order){
+						    var list=orderList[order];
+						htmlStr= "<div class=\"appointment-li\">"
+								+"<span class=\"name\">"+list.name+"</span>"
+								+"<span class=\"between\">本人</span>"
+								+"<span class=\"sex\">"+list.gender+"/"+list.age+"</span>"
+								+"<span class=\"describe\">"+autoAddEllipsis(list.description,44)
+								+"<a ceaterTime=\""+getCreateDate(list.addTime)+"\" description = \""+list.description+"\">详情</a></span>"
+								+"<span class=\"service\">文字*"+list.textTotalNum+"<br/>语音*"+list.callTotalNum+"<br/>面对面*"+list.f2fTotalNum+"</span>"
+								+"<span class=\"count\">￥"+list.profit+"/￥"+list.originMoney+"</span>"
+								+"<span class=\"create-time\">"+list.addTime+"</span> "
+								+"</div>";
+						}); 
+					}
+					$("#handledOrderList").html(htmlStr);
+				}
+			}, {"from":"expert","currentPage":page,"desc":desc,"expertId":expertId,"debug":1});
+		}
+		function getCreateDate(dateStr){
+			var d = new Date(dateStr);
+			return  d.format('yyyy年MM月dd日 hh:mm:ss');
+		}
+	</script>
+</body>
+</html>

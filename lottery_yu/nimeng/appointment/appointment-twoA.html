@@ -1,0 +1,323 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>预约管理</title>
+<link type="text/css" rel="stylesheet" href="../css/style.css" /> 
+<link type="text/css" rel="stylesheet" href="../css/appointment-two.css" />
+<script type="text/javascript" src="../js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="../js/jquery.md5.js"></script>
+<script type="text/javascript" src="../js/jquery.jsonp.js"></script>
+
+<script type="text/javascript" src="../js/jquery.cookie.js"></script>
+<script type="text/javascript" src="../js/pupil-ajax.js"></script>
+<script type="text/javascript" src="../js/b.js"></script>
+<script type="text/javascript" src="../js/style.js"></script>
+</head>
+
+<body>
+	<div class="public-top min-cen">
+    	<div class="center logo"></div>
+    </div>
+    <div class="content center public">
+   		<div class="menu">
+        	<a class="menu-li" href="javascript:;">
+            	<span class="menu-title">个人信息</span>
+                <span class="menu-min-title">Personal Information</span>
+            </a>
+            <a class="menu-li" href="javascript:;">
+            	<span class="menu-title">咨询管理</span>
+                <span class="menu-min-title">Consulting Management</span>
+            </a>
+            <a class="menu-li active" href="javascript:;">
+            	<span class="menu-title">预约管理</span>
+                <span class="menu-min-title">Booking Management</span>
+            </a>
+            <a class="menu-li" href="javascript:;">
+            	<span class="menu-title">收入记录</span>
+                <span class="menu-min-title">Income Record</span>
+            </a>
+            <a class="menu-li" href="javascript:;">
+            	<span class="menu-title">提现记录</span>
+                <span class="menu-min-title">Present Record</span>
+            </a>
+        </div>
+        <div class="puclic-right">
+        	<div class="center-top">
+            	<a href="./appointmentA.html">
+                	<span class="title">未处理（12）</span>
+                	<span class="min-title">Untreated</span>
+                </a>
+                <a class="active" href="#">
+                	<span class="title">处理中（55）</span>
+                	<span class="min-title">In Treatment</span>
+                </a>
+                <a href="./appointment-threeA.html">
+                	<span class="title">已结束（125）</span>
+                	<span class="min-title">Has Ended</span>
+                </a>
+            </div>
+        	<div class="center-frame">
+				<div class="appointment-search">
+                	<div class="input-box">
+                    	<input class="input" name="" type="text" id="searchStr" value="" placeholder="失恋、文字咨询" />
+                        <input class="submit" type="submit" id="handlingOrderListSearch" value="查询" />
+                    </div>
+                </div>
+                <div class="appointment-frame">
+                	<div class="appointment-head">
+                		<span class="name">姓名</span>
+                        <span class="between">关系</span>
+                        <span class="sex">性别/年龄</span>
+                        <span class="describe">问题描述</span>
+                        <span class="service">服务进度</span>
+                        <span class="count">收入/总价</span>
+                        <span class="create-time">预约时间</span>
+                        <span class="reminder">咨询方式</span>
+                        <span class="operation">操作</span>
+                	</div>
+                    <div class="appointment-body" id="handlingOrderList">
+                    	<!--<div class="appointment-li">
+                            <span class="name">可爱的柠檬</span>
+                            <span class="between">本人</span>
+                            <span class="sex">女/22</span>
+                            <span class="describe">失恋了很不开心，很不开心，很不开心失恋很不开心…<a href="javascript:;">详情</a></span>
+                            <span class="service">
+                            	<a href="javascript:;">1/5</a>
+                                <span>第1次进行中</span>
+                            </span>
+                            <span class="count">￥200.00/￥1000.00</span>
+                            <span class="create-time">
+                            	<select class="" name="">
+                                	<option value="2016-7-31">2016-7-31</option>
+                                    <option value="2016-7-31">2016-7-31</option>
+                                    <option value="2016-7-31">2016-7-31</option>
+                                    <option value="2016-7-31">2016-7-31</option>
+                                    <option value="2016-7-31">2016-7-31</option>
+                                    <option value="2016-7-31">2016-7-31</option>
+                                </select>
+                                <select class="" name="">
+                                	<option value="2016-7-31">2016-7-31</option>
+                                    <option value="2016-7-31">2016-7-31</option>
+                                    <option value="2016-7-31">2016-7-31</option>
+                                    <option value="2016-7-31">2016-7-31</option>
+                                    <option value="2016-7-31">2016-7-31</option>
+                                    <option value="2016-7-31">2016-7-31</option>
+                                </select>
+                            </span>
+                            <span class="reminder">
+                            	<select class="" name="">
+                                	<option value="语音咨询">语音咨询</option>
+                                    <option value="语音咨询">语音咨询</option>
+                                    <option value="语音咨询">语音咨询</option>
+                                    <option value="语音咨询">语音咨询</option>
+                                    <option value="语音咨询">语音咨询</option>
+                                </select>
+                            </span>
+                            <span class="operation">
+                            	<a href="javascript:;">修改</a>
+                                <a href="javascript:;">申请付款</a>
+                            </span>
+                        </div>
+					 -->
+                    </div>
+                </div>
+                <div class="page">
+                    <div class="page-right">
+                        <a  id="handlingOrderListPre" style="display:none">上一页</a>
+                        <a class="active" id="handlingOrderListNext"  value="2" >下一页</a>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+    <div class="window service" style="display:none;">
+    	<div class="window-bg"></div>
+    	<div class="window-frame clear">
+        	<div class="window-out">X</div>
+        	<div class="service-li">
+            	<div class="title">文字咨询&nbsp;&nbsp;3/5</div>
+                <div class="steps">
+                	<div class="steps-li first">
+                    	<span class="steps-li-span">1</span>
+                        <span class="steps-li-but" id="step_1">已付款</span>
+                    </div>
+                    <div class="steps-li">
+                    	<span class="steps-li-span">2</span>
+                        <span class="steps-li-but" id="step_2">已服务</span>
+                    </div>
+                    <div class="steps-li">
+                    	<span class="steps-li-span">3</span>
+                        <span class="steps-li-but" id="step_3" >进行中</span>
+                    </div>
+                    <div class="steps-li">
+                    	<span class="steps-li-span">4</span>
+                        <span class="steps-li-but" id="step_4">未开始</span>
+                    </div>
+                    <div class="steps-li last">
+                    	<span class="steps-li-span">5</span>
+                    	<span class="steps-li-but" id="step_5">未开始</span>
+                    </div>
+                </div>
+            </div>
+            <div class="service-li">
+            	<div class="title">文字咨询&nbsp;&nbsp;3/5</div>
+                <div class="steps">
+                	<div class="steps-li first">
+                    	<span class="steps-li-span">1</span>
+                        <span class="steps-li-but">已付款</span>
+                    </div>
+                    <div class="steps-li">
+                    	<span class="steps-li-span">2</span>
+                        <span class="steps-li-but">已服务</span>
+                    </div>
+                    <div class="steps-li">
+                    	<span class="steps-li-span">3</span>
+                        <span class="steps-li-but">进行中</span>
+                    </div>
+                    <div class="steps-li">
+                    	<span class="steps-li-span">4</span>
+                        <span class="steps-li-but">未开始</span>
+                    </div>
+                    <div class="steps-li last">
+                    	<span class="steps-li-span">5</span>
+                    	<span class="steps-li-but">未开始</span>
+                    </div>
+                </div>
+            </div>
+            <div class="service-li">
+            	<div class="title">文字咨询&nbsp;&nbsp;3/5</div>
+                <div class="steps">
+                	<div class="steps-li first">
+                    	<span class="steps-li-span">1</span>
+                        <span class="steps-li-but">已付款</span>
+                    </div>
+                    <div class="steps-li">
+                    	<span class="steps-li-span">2</span>
+                        <span class="steps-li-but">已服务</span>
+                    </div>
+                    <div class="steps-li">
+                    	<span class="steps-li-span">3</span>
+                        <span class="steps-li-but">进行中</span>
+                    </div>
+                    <div class="steps-li">
+                    	<span class="steps-li-span">4</span>
+                        <span class="steps-li-but">未开始</span>
+                    </div>
+                    <div class="steps-li last">
+                    	<span class="steps-li-span">5</span>
+                    	<span class="steps-li-but">未开始</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+	
+	 <script> 
+		$(function(){ 
+			getHandlingOrderList(1,null);
+			$("#handlingOrderListPre").click(function(){
+				var page = $(this).attr("value");
+				if(page==2){
+					$(this).css("display","block");
+				}
+				$(this).attr("value",parseInt(page)-1);
+				getHandlingOrderList(page,null);
+			});
+			$("#handlingOrderListNext").click(function(){
+				var page = $(this).attr("value");
+				if(page==2){
+					$(this).css("display","block");
+				}
+				$(this).attr("value",parseInt(page)+1);
+				getHandlingOrderList(page,null);
+			});
+			
+			$("#handlingOrderListSearch").click(function(){
+				var searchStr = $("#searchStr").val(); 
+				getHandlingOrderList(1,searchStr);
+			});
+			
+		});
+		
+		//获取未接单预约咨询订单
+		function getHandlingOrderList(page,desc){
+			var expertId = $.cookie("expertId");
+			ajaxPostJson(requestUrl + "/corder/takeOrderA", function(data, status){
+				eval("rt=" + data);
+				if (rt.error!="") {
+					$("#handlingOrderListNext").css("display","none");
+					alert(rt.error);
+				}else{ 
+					var orderList =  rt.orderList; 
+					var htmlStr ="";
+					if(typeof(orderList)!="undefined"){
+						$.each(orderList,function(order){
+						htmlStr= "<div class=\"appointment-li\">"
+								+"<span class=\"name\">"+order.name+"</span>"
+								+"<span class=\"between\">本人</span>"
+								+"<span class=\"sex\">"+order.gender+"/"+order.age+"</span>"
+								+"<span class=\"describe\">"+autoAddEllipsis(order.description,44)
+								+"<a href=\"javascript:;\">详情</a></span>"
+								+"<span class=\"service\">"
+                            	+"<a href=\"javascript:;\">"+textStatusGoingStep(order.textStatus)+"/5</a>"
+                                +"<span>第"+textStatusGoingStep(order.textStatus)+"次进行中</span>"
+								+"</span>"
+								+"<span class=\"count\">￥"+order.profit+"/￥"+order.originMoney+"</span>"
+								+"<span class=\"create-time\">"
+								+"	<select class=\"\" name=\"\">"
+                                +"	<option value=\"2016-7-31\">2016-7-31</option>"
+                                +"    <option value=\"2016-7-31\">2016-7-31</option>"
+                                +"    <option value=\"2016-7-31\">2016-7-31</option>"
+                                +"    <option value=\"2016-7-31\">2016-7-31</option>"
+                                +"    <option value=\"2016-7-31\">2016-7-31</option>"
+                                +"    <option value=\"2016-7-31\">2016-7-31</option>"
+                                +" </select>"
+                                +" <select class=\"\" name=\"\">"
+                                +"	<option value=\"2016-7-31\">2016-7-31</option>"
+                                +"    <option value=\"2016-7-31\">2016-7-31</option>"
+                                +"    <option value=\"2016-7-31\">2016-7-31</option>"
+                                +"    <option value=\"2016-7-31\">2016-7-31</option>"
+                                +"    <option value=\"2016-7-31\">2016-7-31</option>"
+                                +"    <option value=\"2016-7-31\">2016-7-31</option>"
+                                +" </select>"
+								+"</span>"
+								+"<span class=\"reminder\">"
+								+"	<select class=\"\" name=\"\">"
+                                +"	<option value=\"语音咨询\">语音咨询</option>"
+                                +"    <option value=\"语音咨询\">文字咨询</option>"
+                                +"    <option value=\"语音咨询\">面对面咨询</option>" 
+                                +"</select>"
+								+"</span>"
+								+"<span class=\"operation\">"
+                            	+"<a href=\"javascript:;\" orderId=\""+orderId+"\">修改</a>"
+                                +"<a href=\"javascript:;\" orderId=\""+orderId+"\" >申请付款</a>"
+								+"</span>"
+								+"</div>";
+						}); 
+						 
+					}
+					$("#handlingOrderList").html(htmlStr); 
+				}
+//			}, {"from":"expert","currentpage":page,"desc":desc,"expertId":expertId,"debug":1});
+			}, {"from":"expert","orderId":"44MAUUQ1467698185112","appointType":"f2f","appointTimeStr":"2016-10-27 08:00:00"});
+		}
+		function textStatusGoingStep(textStatus){
+			if(typeof(textStatus)!="undefined" && textStatus!=""){
+				var status = textStatus.split("");
+				var step = 0;
+				for(var i = 0;i < status.length; i++) { 
+					if(status[i]!="0"){
+						step++;
+					}
+				}
+				return step;
+			}else{
+				return 0;
+			}
+		}
+		
+	 
+	</script> 
+</body>
+</html>

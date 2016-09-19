@@ -1,0 +1,481 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>咨询管理</title>
+<link type="text/css" rel="stylesheet" href="../css/style.css" />
+<link type="text/css" rel="stylesheet" href="../css/consult.css" />
+<script type="text/javascript" src="../js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="../js/jquery.md5.js"></script>
+<script type="text/javascript" src="../js/jquery.jsonp.js"></script>
+
+<script type="text/javascript" src="../js/jquery.cookie.js"></script>
+<script type="text/javascript" src="../js/pupil-ajax.js"></script>
+<script type="text/javascript" src="../js/b.js"></script>
+<script type="text/javascript" src="../js/style.js"></script>
+</head>
+
+<body>
+	<div class="public-top min-cen">
+    	<div class="center logo"></div>
+    </div>
+    <div class="content center public">
+   		<div class="menu">
+        	<a class="menu-li" href="javascript:;">
+            	<span class="menu-title">个人信息</span>
+                <span class="menu-min-title">Personal Information</span>
+            </a>
+            <a class="menu-li active" href="javascript:;">
+            	<span class="menu-title">咨询管理</span>
+                <span class="menu-min-title">Consulting Management</span>
+            </a>
+            <a class="menu-li" href="javascript:;">
+            	<span class="menu-title">预约管理</span>
+                <span class="menu-min-title">Booking Management</span>
+            </a>
+            <a class="menu-li" href="javascript:;">
+            	<span class="menu-title">收入记录</span>
+                <span class="menu-min-title">Income Record</span>
+            </a>
+            <a class="menu-li" href="javascript:;">
+            	<span class="menu-title">提现记录</span>
+                <span class="menu-min-title">Present Record</span>
+            </a>
+        </div>
+        <div class="puclic-right">
+        	<div class="center-top" >
+            	<a class="active" href="javascript:;">
+                	<span class="title">未接单</span>
+                	<span class="min-title">No Single</span>
+                </a>
+                <a href="javascript:;">
+                	<span class="title">新咨询（55）</span>
+                	<span class="min-title">New Consultation</span>
+                </a>
+                <a href="javascript:;">
+                	<span class="title">已回复未结束(255)</span>
+                	<span class="min-title">Has Not Ended The Reply</span>
+                </a>
+                <a href="javascript:;">
+                	<span class="title">已回复已结束（125）</span>
+                	<span class="min-title">The Reply Is Over</span>
+                </a>
+            </div>
+			<!-- 未接单 -->
+        	<div class="center-frame" id="consult_0">
+               	<div class="consult-frame">
+               		<div class="consult-li">
+                    	<span>用户名</span>
+                        <input type="text" name="unTakenName" id="unTakenName"  value="" />
+                    </div>	
+                    <div class="consult-li">
+                    	<span>手机号</span>
+                        <input type="text" name="unTakenPhone" id="unTakenPhone" value="" />
+                    </div>	
+                    <a class="consult-but-search"  id="unTakenConsultSearch">查询</a>
+               	</div>
+                <div class="consult-list">
+                	<div class="consult-list-head">
+                    	<span class="username">用户名</span>
+                        <span class="relationship">关系</span>
+                        <span class="sex">性别/年龄</span>
+                        <span class="describe">问题描述</span>
+                        <span class="time">生成时间</span>
+                        <span class="operation">操作</span>
+                    </div>
+                    <div class="consult-list-body" id="unTakenConsultList">
+                    </div>
+                    <div class="page">
+                    	<div class="page-right">
+                        	<a  id="unTakenConsultPre"  style="display:none">上一页</a>
+                            <a  id="unTakenConsultNext" class="active" value="2">下一页</a> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+			<!-- 新咨询 -->
+			<div class="center-frame" id="consult_1" style="display:none;">
+               	<div class="consult-frame">
+               		<div class="consult-li">
+                    	<span>用户名</span>
+                        <input type="text" name="unHandleName" id="unHandleName"  value="" />
+                    </div>	
+                    <div class="consult-li">
+                    	<span>手机号</span>
+                        <input type="text" name="unHandlePhone" id="unHandlePhone" value="" />
+                    </div>	
+                    <a class="consult-but-search" id="unHandleConsultSearch" >查询</a> 
+               	</div>
+                <div class="consult-list">
+                	<div class="consult-list-head">
+                    	<span class="username">用户名</span>
+                        <span class="relationship">关系</span>
+                        <span class="sex">性别/年龄</span>
+                        <span class="describe">问题描述</span>
+                        <span class="time">生成时间</span>
+                        <span class="operation">操作</span>
+                    </div>
+                    <div class="consult-list-body consult-new" id="unHandleConsultList"> 
+                    </div>
+                    <div class="page">
+                    	<div class="page-right">
+                        	<a  id="unHandleConsultPre" style="display:none">上一页</a>
+                            <a  id="unHandleConsultNext"   class="active" value="2">下一页</a> 
+                        </div>
+                    </div>
+                </div>
+            </div> 
+			<!-- 已回复未结束 -->
+			<div class="center-frame" id="consult_2" style="display:none;">
+               	<div class="consult-frame">
+               		<div class="consult-li">
+                    	<span>用户名</span>
+                        <input type="text" name="handledUnFinishedName" id="handledUnFinishedName"  value="" />
+                    </div>	
+                    <div class="consult-li">
+                    	<span>手机号</span>
+                        <input type="text" name="handledUnFinishedPhone" id="handledUnFinishedPhone"  value="" />
+                    </div>	
+                    <a class="consult-but-search"  id="handledUnFinishedSearch">查询</a> 
+               	</div>
+                <div class="consult-list consult-succ">
+                	<div class="consult-list-head">
+                    	<span class="username">用户名</span>
+                        <span class="relationship">关系</span>
+                        <span class="sex">性别/年龄</span>
+                        <span class="describe">问题描述</span>
+                        <span class="time">生成时间</span>
+                        <span class="count">回复数</span>
+                        <span class="operation">操作</span>
+                    </div>
+                    <div class="consult-list-body consult-new" id="handledUnFinishedList"> 
+                    </div>
+                    <div class="page">
+                    	<div class="page-right">
+                        	<a  id="handledUnFinishedPre" style="display:none">上一页</a>
+                            <a  id="handledUnFinishedNext"  class="active" value="2">下一页</a> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        	<!-- 已回复已结束 -->
+			<div class="center-frame" id="consult_3" style="display:none;">
+               	<div class="consult-frame">
+               		<div class="consult-li">
+                    	<span>用户名</span>
+                        <input type="text" name="finishConsultName" id="finishConsultName" value="" />
+                    </div>	
+                    <div class="consult-li">
+                    	<span>手机号</span>
+                        <input type="text" name="finishConsultPhone" id="finishConsultPhone" value="" />
+                    </div>	
+                    <a class="consult-but-search"  id="finishConsultSearch">查询</a> 
+               	</div>
+                <div class="consult-list consult-succ">
+                	<div class="consult-list-head">
+                    	<span class="username">用户名</span>
+                        <span class="relationship">关系</span>
+                        <span class="sex">性别/年龄</span>
+                        <span class="describe">问题描述</span>
+                        <span class="time">生成时间</span>
+                        <span class="count">回复数</span>
+                        <span class="operation">操作</span>
+                    </div>
+                    <div class="consult-list-body" id="finishConsultList"> 
+                    </div>
+                    <div class="page">
+                    	<div class="page-right">
+                        	<a  id="finishConsultListPre" style="display:none">上一页</a>
+                            <a  id="finishConsultListNext"   class="active" value="2">下一页</a> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+		</div>
+    </div>  
+	
+	
+	<script>
+		$(function(){
+            getUnTakenConsult(1,null,null);
+			$(".center-top >a").click(function(){
+				var i = $(this).index();
+                var text=$(this).find(".title").html().slice(0,3);
+                if(text==="未接单"){
+                    getUnTakenConsult(1,null,null);
+                }else  if(text==="新咨询"){
+                    getUnHandleConsult(1,null,null);
+                }else  if(text==="已回复"){
+                    if($(this).find(".title").html().slice(3,6)==="未结束"){
+                        getHandledUnFinished(1,null,null);
+                    }else{
+                        getFinishConsult(1,null,null);
+                    }
+                }
+				$(".center-top >a").removeClass("active"); 
+				$(".center-frame").css("display","none");
+				$(this).addClass("active");
+				$("#consult_"+i).css("display","block");
+				}
+			); 
+			//自动加载数据
+//			getUnTakenConsult(1,null,null);
+//			getUnHandleConsult(1,null,null);
+//			getHandledUnFinished(1,null,null);
+//			getFinishConsult(1,null,null);
+			//查询按钮
+			$("#unTakenConsultSearch").click(function(){
+				var name = $("#unTakenName").val();
+				var phone = $("#unTakenPhone").val();
+				getUnTakenConsult(1,name,phone);
+			});
+			$("#unHandleConsultSearch").click(function(){
+				var name = $("#unHandleName").val();
+				var phone = $("#unHandlePhone").val();
+				getUnHandleConsult(1,name,phone);
+			});
+			$("#handledUnFinishedSearch").click(function(){
+				var name = $("#handledUnFinishedName").val();
+				var phone = $("#handledUnFinishedPhone").val();
+				getHandledUnFinished(1,name,phone);
+			});
+			$("#finishConsultSearch").click(function(){
+				var name = $("#finishConsultName").val();
+				var phone = $("#finishConsultPhone").val();
+				getFinishConsult(1,name,phone);
+			});
+			   
+			//上一页下一页按钮
+			//获取未处理订单
+			$("#unTakenConsultPre").click(function(){
+				var page = $(this).attr("value");
+				if(page==1){
+					$(this).css("display","none");
+				}
+				$(this).attr("value",parseInt(page)-1);
+				getUnTakenConsult(page,null,null);
+			});
+			
+			$("#unTakenConsultNext").click(function(){
+				var page = $(this).attr("value");
+				if(page==2){
+					$(this).css("display","block");
+				}
+				$(this).attr("value",parseInt(page)+1);  
+				getUnTakenConsult(page,null,null);
+			});
+			
+			//获取新咨询
+			$("#unHandleConsultPre").click(function(){
+				var page = $(this).attr("value");
+				if(page==2){
+					$(this).css("display","block");
+				}
+				$(this).attr("value",parseInt(page)-1);
+				getUnHandleConsult(page,null,null);
+			});
+			$("#unHandleConsultNext").click(function(){
+				var page = $(this).attr("value");
+				if(page==2){
+					$(this).css("display","block");
+				}
+				$(this).attr("value",parseInt(page)+1);
+				getUnHandleConsult(page,null,null);
+			});
+			
+			//获取已回复未结束 
+			$("#handledUnFinishedPre").click(function(){
+				var page = $(this).attr("value");
+				if(page==2){
+					$(this).css("display","block");
+				}
+				$(this).attr("value",parseInt(page)-1);
+				getHandledUnFinished(page,null,null);
+			});
+			$("#handledUnFinishedNext").click(function(){
+				var page = $(this).attr("value");
+				if(page==2){
+					$(this).css("display","block");
+				}
+				$(this).attr("value",parseInt(page)+1);
+				getHandledUnFinished(page,null,null);
+			});
+			
+			//获取已结束咨询
+			$("#finishConsultListPre").click(function(){
+				var page = $(this).attr("value");
+				if(page==2){
+					$(this).css("display","block");
+				}
+				$(this).attr("value",parseInt(page)-1);
+				getFinishConsult(page,null,null);
+			});
+			$("#finishConsultListNext").click(function(){
+				var page = $(this).attr("value");
+				if(page==2){
+					$(this).css("display","block");
+				}
+				$(this).attr("value",parseInt(page)+1);
+				getFinishConsult(page,null,null);
+			});
+
+            /*******结束按钮******/
+            $(".consult-list").delegate(".operation","click",function(event){
+                event.stopPropagation();
+                if($(this).html()==="结束"){
+                    var consultId=$(this).attr("consultid");
+                    ajaxPostJson(requestUrl + "/FinishConsultServlet4M", function(data, status){
+                        eval("rt=" + data);
+                        if(rt.error!==""){
+                            alert(rt.error);
+                        }
+                    }, {"from":"expert","consultId":consultId});
+                }
+            });
+            $(".consult-list").delegate(".describe>a","click",function(event){
+                var consultId=$(this).attr("consultId");
+                ajaxPostJson(requestUrl + "/ShowConsultServlet4M", function(data, status){
+                    eval("rt=" + data);
+                    if(rt.error!==""){
+                        alert(rt.error);
+                    }
+                }, {"from":"expert","consultId":consultId});
+            })
+            /********间隔5秒获取数据******/
+            setInterval(function(){
+                var text=$(".center-top >a.active").find(".title").html().slice(0,3);
+                if(text==="未接单"){
+                    getUnTakenConsult(1,null,null);
+                }else  if(text==="新咨询"){
+                    getUnHandleConsult(1,null,null);
+                }else  if(text==="已回复"){
+                    if($(this).find(".title").html().slice(3,6)==="未结束"){
+                        getHandledUnFinished(1,null,null);
+                    }else{
+                        getFinishConsult(1,null,null);
+                    }
+                }
+            },5000);
+		});
+		//获取未处理订单
+		function getUnTakenConsult(page,desc,mobile){
+			var expertId = $.cookie("expertId");
+			ajaxPostJson(requestUrl + "/ReturnUnTakenConsultServlet4M", function(data, status){
+				eval("rt=" + data);
+				if (rt.error!="") {
+					$("#unTakenConsultNext").css("display","none");
+					alert(rt.error);
+				}else{ 
+					var consultList =  rt.consultList; 
+					var htmlStr ="";
+					if(typeof(consultList)!="undefined"){
+						$.each(consultList,function(consult){
+						    var list=consultList[consult];
+						htmlStr+= "<div class=\"consult-list-li\">"
+                                    +"<span class=\"username\">"+list.user_nickname+"</span>"
+                                    +"<span class=\"relationship\">"+list.relationship+"</span>"
+                                    +"<span class=\"sex\">"+list.gender+"/"+list.age+"</span>"
+                                    +"<span class=\"describe\">"+autoAddEllipsis(list.describe,44)
+                                         +"<a href=\"javascript:;\" describe=\""+list.describe+"\" uuid=\""+list.uuid+"\" consultId=\""+list.consultId+"\">详情</a></span>"
+                                    +"<span class=\"time\">"+list.commitTime+"</span>"
+                                    +"<a class=\"operation\" href=\"#\" uuid=\""+list.uuid+"\"   consultId ="+list.consultId+">操作</a>"
+								+"</div>";
+						}); 
+						 
+					}
+					$("#unTakenConsultList").html(htmlStr); 
+				}
+			}, {"from":"expert","currentpage":page,"desc":desc,"mobile":mobile,"expertId":expertId,"debug":1});
+		}
+		//获取新咨询
+		function getUnHandleConsult(page,desc,mobile){
+			var expertId = $.cookie("expertId");
+			ajaxPostJson(requestUrl + "/ReturnUnHandleConsultServlet4M", function(data, status){
+				eval("rt=" + data);
+				if (rt.error!="") {
+					$("#unHandleConsultNext").css("display","none");
+					alert(rt.error);
+				}else{ 
+					var consultList =  rt.consultList; 
+					var htmlStr ="";
+					if(typeof(consultList)!="undefined"){
+					    for(var i=0;i<consultList.length;i++){
+                            var list=consultList[i];
+                            htmlStr+= "<div class=\"consult-list-li\">"
+                                    +"<span class=\"username\">"+list.user_nickname+"</span>"
+                                    +"<span class=\"relationship\">"+list.relationship+"</span>"
+                                    +"<span class=\"sex\">"+list.gender+"/"+list.age+"</span>"
+                                    +"<span class=\"describe\">"+autoAddEllipsis(list.describe,44)
+                                    +"<a href=\"javascript:;\" describe=\""+list.describe+"\" consultId=\""+list.consultId+"\" >详情</a></span>"
+                                    +"<span class=\"time\">"+list.commitTime+"</span>"
+                                    +"<a class=\"operation\"  uuid=\""+list.uuid+"\" consultId ="+list.consultId+">回复</a>"
+                                    +"<a class=\"operation\"  uuid=\""+list.uuid+"\" consultId ="+list.consultId+">结束</a> "
+                                    +"</div>";
+                        }
+					}
+                    $("#unHandleConsultList").html(htmlStr);
+				}
+			}, {"from":"expert","currentpage":page,"desc":desc,"mobile":mobile,"expertId":expertId,"debug":1});
+		}
+		//获取已回复未结束
+		function getHandledUnFinished(page,desc,mobile){
+			var expertId = $.cookie("expertId");
+			ajaxPostJson(requestUrl + "/ReturnHandledUnFinishedConsultServlet4M", function(data, status){
+				eval("rt=" + data);
+				if (rt.error!="") {
+					$("#handledUnFinishedNext").css("display","none");
+					alert(rt.error);
+				}else{ 
+					var consultList =  rt.consultList; 
+					var htmlStr ="";
+					if(typeof(consultList)!="undefined"){
+						$.each(consultList,function(consult){
+                            var list=consultList[consult];
+						htmlStr+= "<div class=\"consult-list-li\">"
+								+"<span class=\"username\">"+list.user_nickname+"</span>"
+								+"<span class=\"relationship\">"+list.relationship+"</span>"
+								+"<span class=\"sex\">"+list.gender+"/"+list.age+"</span>"
+								+"<span class=\"describe\">"+autoAddEllipsis(list.describe,44)
+								+"<a href=\"javascript:;\" describe=\""+list.describe+"\" consultId=\""+list.consultId+"\" >详情</a></span>"
+								+"<span class=\"time\">"+list.commitTime+"</span>"
+								+"<a class=\"operation\"  uuid=\""+list.uuid+"\" consultId ="+list.consultId+">回复</a>"
+								+"<a class=\"operation\"  uuid=\""+list.uuid+"\" consultId ="+list.consultId+">结束</a> "
+								+"</div>";
+						}); 
+					}
+					$("#handledUnFinishedList").html(htmlStr); 
+				}
+			}, {"from":"expert","currentpage":page,"desc":desc,"mobile":mobile,"expertId":expertId,"debug":1});
+		}
+		//获取已结束咨询
+		function getFinishConsult(page,desc,mobile){
+			var expertId = $.cookie("expertId");
+			ajaxPostJson(requestUrl + "/FinishConsultServlet4M", function(data, status){
+				eval("rt=" + data);
+				if (rt.error!="") {
+					$("#finishConsultListNext").css("display","none");
+					alert(rt.error);
+				}else{ 
+					var consultList =  rt.consultList; 
+					var htmlStr ="";
+					if(typeof(consultList)!="undefined"){
+						$.each(consultList,function(consult){
+						htmlStr+= "<div class=\"consult-list-li\">"
+								+"<span class=\"username\">"+consult.user_nickname+"</span>"
+								+"<span class=\"relationship\">"+consult.relationship+"</span>"
+								+"<span class=\"sex\">"+consult.gender+"/"+consult.age+"</span>"
+								+"<span class=\"describe\">"+autoAddEllipsis(consult.describe,44)
+								+"<a href=\"javascript:;\" describe=\""+consult.describe+"\" consultId=\""+list.consultId+"\" >详情</a></span>"
+								+"<span class=\"time\">"+consult.commitTime+"</span>"
+								+"<a class=\"operation\"  uuid=\""+consult.uuid+"\" consultId ="+consult.consultId+">详情</a>" 
+								+"</div>";
+						}); 
+					}
+					$("#finishConsultList").html(htmlStr); 
+				}
+			}, {"from":"expert","currentpage":page,"desc":desc,"mobile":mobile,"expertId":expertId,"debug":1});
+		}
+	</script>
+</body>
+</html>

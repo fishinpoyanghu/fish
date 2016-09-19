@@ -1,0 +1,71 @@
+{
+  "index.html": {
+    "href": "index.html",
+    "resources": [
+      "js/mui.min.js",
+      "css/mui.min.css"
+    ],
+    "refer": [],
+    "priority": 0
+  },
+  "ROOT/loginA.html": {
+    "resources": [
+      "ROOT/js/jquery.md5.js",
+      "ROOT/js/jquery.jsonp.js",
+      "ROOT/js/b.js",
+      "ROOT/js/jquery-1.11.2.min.js",
+      "ROOT/js/jquery.cookie.js",
+      "ROOT/js/login.js",
+      "ROOT/js/style.js",
+      "ROOT/js/pupil-ajax.js"
+    ],
+    "refer": []
+  },
+  "nimeng/loginA.html": {
+    "resources": [
+      "nimeng/js/style.js",
+      "nimeng/js/pupil-ajax.js",
+      "nimeng/css/login.css",
+      "nimeng/images/login-logo.jpg",
+      "nimeng/js/b.js",
+      "nimeng/js/jquery-1.11.2.min.js",
+      "nimeng/css/style.css",
+      "nimeng/images/submit-bg.jpg",
+      "nimeng/js/jquery.cookie.js",
+      "nimeng/centerA.html",
+      "nimeng/js/jquery.jsonp.js",
+      "nimeng/js/login.js",
+      "nimeng/js/jquery.md5.js"
+    ],
+    "refer": [
+      "nimeng/centerA.html"
+    ]
+  },
+  "nimeng/centerA.html": {
+    "resources": [
+      "nimeng/js/jquery.form.js",
+      "nimeng/images/pic.jpg",
+      "nimeng/js/PCASClass.js",
+      "nimeng/images/logo.png",
+      "nimeng/images/public-top.png",
+      "nimeng/js/jeDate.min.js",
+      "nimeng/css/jquery-ui.min.css",
+      "nimeng/js/jquery-ui.js",
+      "nimeng/css/jedate.css",
+      "nimeng/css/center.css",
+      "nimeng/js/ajaxfileupload.js",
+      "nimeng/js/centerA.js",
+      "nimeng/css/jquery-ui.theme.min.css",
+      "nimeng/js/style.js",
+      "nimeng/js/pupil-ajax.js",
+      "nimeng/js/jquery-1.11.2.min.js",
+      "nimeng/js/jquery.md5.js",
+      "nimeng/js/b.js",
+      "nimeng/css/style.css",
+      "nimeng/images/submit-bg.jpg",
+      "nimeng/js/jquery.cookie.js",
+      "nimeng/js/jquery.jsonp.js"
+    ],
+    "refer": []
+  }
+}

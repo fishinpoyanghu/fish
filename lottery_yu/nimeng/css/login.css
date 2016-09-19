@@ -1,0 +1,48 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* ****************************************************************
+ * public css
+ * ***************************************************************/
+html,body{ width:100%; height:100%; min-width:800px; min-height:600px;} 
+body{ background-color:#17b2e6;} 
+
+/* ****************************************************************
+ * login css
+ * ***************************************************************/
+.login-top{ width:100%; height:10%;}
+.login-box{ width:600px; height:auto; overflow:hidden; margin:0 auto; padding-bottom:25px; border:solid 20px #5dc9ee; background-color:#c5ecf9;}
+.login-logo{ width:600px; height:140px; overflow:hidden; background:url(../images/login-logo.jpg) no-repeat center top;}
+.login-form{ width:400px; height:auto; overflow:hidden; margin:0 auto; padding-top:10px;}
+.login-form input.input{ width:380px; height:60px; background-color:#ffffff; padding-left:20px; margin-top:18px; font-size:22px; color:#a2a2a2;}
+.login-form .input-prompt{ display:block; line-height:26px; font-size:14px;}
+.login-form .input-prompt._error{ color:#ff161a;}
+.login-form .input-prompt._success{ color:#00ab48;}
+.login-form .remember{ width:100%; height:auto; overflow:hidden; margin-top:20px;}
+.login-form .remember .fl input{ float:left; margin-top:6px;}
+.login-form .remember .fl label{ float:left; font-size:16px;}
+.login-form .remember .prompt{ float:right; font-size:16px; color:#e24242;}
+.login-form .submit-but{ width:100%; height:auto; overflow:hidden; padding-top:30px;}
+.login-form .submit-but .but{ display:block; float:left; width:140px; height:40px; overflow:hidden; background:url(../images/submit-bg.jpg) repeat-x left top; cursor:pointer; text-align:center; line-height:40px; font-size:18px; color:#ffffff; margin:0 30px;}
+
+/* ****************************************************************
+ * success css
+ * ***************************************************************/
+.success{ width:500px; height:auto; overflow:hidden; padding:40px 0; margin:0 auto;}
+.success-left{ float:left;}
+.success-left span{ display:block; line-height:50px; font-size:30px; color:#029bce;}
+.success-prompt{ display:block; width:80px; height:80px; overflow:hidden; float:right; padding:15px 30px; margin-top:50px; border-radius:6px; background-color:#17b2e6; text-align:center; font-size:28px; color:#ffffff;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

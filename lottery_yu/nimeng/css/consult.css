@@ -1,0 +1,36 @@
+@charset "utf-8";
+/* CSS Document */
+
+.consult-frame{ width:auto; height:78px; overflow:hidden; padding:0 30px;}
+.consult-li{ width:auto; height:auto; overflow:hidden; float:left; margin-right:50px;}
+.consult-li span{ float:left; margin-right:10px; line-height:78px; font-size:16px; color:#323232;}
+.consult-li input{ float:left; height:26px; width:120px; margin-top:26px; padding-left:10px; border:solid 1px #cccccc; line-height:26px; font-size:12px; color:#323232;}
+.consult-but-search{ display:block; width:80px; height:30px; overflow:hidden; float:left; margin-top:26px; background-color:#17b2e6; border-radius:6px; line-height:30px; text-align:center; font-size:16px; color:#ffffff;}
+.consult-list{ width:802px; height:auto; overflow:hidden; float:right;}
+.consult-list-head{ width:100%; height:40px; background-color:#eeeeee;}
+.consult-list-head span{ float:left; line-height:40px; text-align:center; font-size:14px; color:#323232; border-right:solid 1px #ffffff;}
+.consult-list .username{ width:100px;}
+.consult-list .relationship{ width:65px;}
+.consult-list .sex{ width:82px;}
+.consult-list .describe{ width:228px;}
+.consult-list .time{ width:158px;}
+.consult-list .operation{ width:162px; border:none;}
+.consult-list-body{ width:100%; height:auto; overflow:hidden;}
+.consult-list-li{ width:100%; height:auto; overflow:hidden; border-bottom:dashed 1px #9d9d9d;}
+.consult-list-li span,.consult-list-li a.operation{ float:left; border-right:solid 1px #eeeeee; text-align:center; line-height:72px; font-size:14px; color:#323232;}
+.consult-list-li span.describe{ width:208px;height:100%;;}
+.consult-list-li span.describe a{ padding:0 5px; color:#17b2e6;}
+.consult-list-li span.describe a:hover{ text-decoration:underline;}
+.consult-list-li span.time{ width:108px; padding:15px 25px; line-height:22px;}
+.consult-list-li a.operation{ width:58px; height:28px; overflow:hidden; border-radius:6px; margin:18px 0 0 50px; background:url(../images/submit-bg.jpg) repeat-x left top; line-height:28px; text-align:center; font-size:16px; color:#ffffff;}
+
+.consult-new .consult-list-li a.operation{ margin:18px 4px 0 14px;}
+
+.consult-succ.consult-list .username{ width:90px;}
+.consult-succ.consult-list .relationship{ width:65px;}
+.consult-succ.consult-list .sex{ width:82px;}
+.consult-succ.consult-list .describe{ width:218px;}
+.consult-succ.consult-list .consult-list-li span.describe{ width:198px;}
+.consult-succ.consult-list .time{ width:128px;}
+.consult-succ.consult-list .consult-list-li span.time{ width:78px;}
+.consult-succ.consult-list .count{ width:50px;}
